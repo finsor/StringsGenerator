@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1483011770 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483013278 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
@@ -63,7 +63,7 @@
 	<Windows.h>
 	<Wincrypt.h>
 
-1482970321 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
+1483013266 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
 	"ProcessorsHandler.h"
 	<stdexcept>
 	"IDelimiterProcessor.h"
@@ -107,7 +107,7 @@
 	<memory>
 	"IRegexParser.h"
 
-1483011673 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
+1483012588 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
 	"RegexClient.h"
 	<string>
 	<stdexcept>
@@ -115,6 +115,7 @@
 	"Collection.h"
 	"Multiplier.h"
 	"ProcessorsHandler.h"
+	"RandomString.h"
 	"Range.h"
 	"RegexParser.h"
 	"Replacer.h"
@@ -160,7 +161,7 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483011689 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
+1483012581 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
 	"Range.h"
 	<iostream>
 	<stdexcept>
@@ -169,9 +170,22 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483011556 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
+1483012450 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
 	"IDelimiterProcessor.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
 	<string>
+
+1483013108 source:c:\users\or_fins\desktop\newstgcpp\stg\src\randomstring.cpp
+	"RandomString.h"
+	<iostream>
+	<string>
+	"PrintableCharacters.h"
+	"CSRandom.h"
+
+1483013093 c:\users\or_fins\desktop\newstgcpp\stg\include\randomstring.h
+	<string>
+	"IDelimiterProcessor.h"
+	"IMultiplier.h"
+	"IRegexParser.h"
 

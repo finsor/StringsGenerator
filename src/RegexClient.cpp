@@ -8,7 +8,7 @@
 #include "Multiplier.h"
 //#include "Or.h"
 #include "ProcessorsHandler.h"
-//#include "RandomString.h"
+#include "RandomString.h"
 #include "Range.h"
 #include "RegexParser.h"
 #include "Replacer.h"
@@ -71,8 +71,6 @@ Regex::RegexClient::Preprocessor(const std::string& regularExpression)
     replacer.Add("/?", "{[01]}");
 
     return ( replacer.GetReplaced(regularExpression) );
-
-//    return regularExpression;
 }
 
 std::string
@@ -83,16 +81,16 @@ Regex::RegexClient::Processor(const std::string& regularExpression)
     Regex::Multiplier multiplier ( '{', '}', ',' );
     Regex::Range range( '-' );
 //    Regex::Or or_( '|' );
-//    Regex::RandomString randChar ( '.', 1, 1 );
-//    Regex::RandomString randString ( '*', 0, 255 );
+    Regex::RandomString randChar ( '.', 1, 1 );
+    Regex::RandomString randString ( '*', 0, 255 );
 
     Regex::ProcessorsHandler processorsHandler(&multiplier);
     processorsHandler.AddProcessor(&brackets);
     processorsHandler.AddProcessor(&collection);
     processorsHandler.AddProcessor(&range);
 //    processorsHandler.AddProcessor(&or_);
-//    processorsHandler.AddProcessor(&randChar);
-//    processorsHandler.AddProcessor(&randString);
+    processorsHandler.AddProcessor(&randChar);
+    processorsHandler.AddProcessor(&randString);
 
     Regex::RegexParser parser( &processorsHandler );
 

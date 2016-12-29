@@ -18,11 +18,7 @@ public:
 
     virtual ~Range() {}
 
-    char Trigger() const
-    {
-        return ( _delimiter );
-    }
-
+    char Trigger() const;
 
     std::string Process(const std::string&              regularExpression,
                         std::string::const_iterator&    regexIterator,

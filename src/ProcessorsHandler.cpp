@@ -17,7 +17,16 @@ const
     IDelimiterProcessor *processor = GetProcessorByTrigger(*regexIterator);
 
     if( nullptr == processor )
+    {
+        if( _multiplyProcessor->Trigger() == *regexIterator )
+        {
+            throw std::runtime_error(StringHelper::Formatter() <<
+                                     "Unexpected multiplier.");
+        }
+
+
         return ( std::string(1, *regexIterator++) );
+    }
     else
         return ( processor->Process(regularExpression,
                                     regexIterator,

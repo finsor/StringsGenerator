@@ -11,12 +11,19 @@
 #include "IMultiplier.h"
 #include "IRegexParser.h"
 
+char
+Regex::Range::Trigger()
+const
+{
+    return ( _delimiter );
+}
+
 std::string
 Regex::Range::Process(const std::string&              regularExpression,
-                        std::string::const_iterator&    regexIterator,
-                        const Regex::IRegexParser&      parser,
-                        const Regex::IMultiplier        *multiplier)
-                        const
+                      std::string::const_iterator&    regexIterator,
+                      const Regex::IRegexParser&      parser,
+                      const Regex::IMultiplier        *multiplier)
+const
 {
     char start = *(regexIterator - 1);
     char stop  = *(regexIterator + 1);
@@ -24,10 +31,10 @@ Regex::Range::Process(const std::string&              regularExpression,
     ++regexIterator;
 
     if( regularExpression.end() <= regexIterator ||
-        !IsSameType(start, stop) )
+            !IsSameType(start, stop) )
     {
         throw std::runtime_error(StringHelper::Formatter() <<
-                "Error: invalid range");
+                                 "Error: invalid range");
     }
 
     uint32_t addition = GetAddition(start, stop);
@@ -42,12 +49,12 @@ Regex::Range::IsSameType(char a, char b)
 const
 {
     return(
-        (isupper(a) && isupper(b))
-           ||
-        (islower(a) && islower(b))
-           ||
-        (isdigit(a) && isdigit(b))
-    );
+              (isupper(a) && isupper(b))
+              ||
+              (islower(a) && islower(b))
+              ||
+              (isdigit(a) && isdigit(b))
+          );
 }
 
 uint32_t
