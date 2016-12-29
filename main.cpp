@@ -59,7 +59,8 @@ int DebugRegex()
 //    std::string reg = "[";
 
     // expected: xxxabcxxxabcxxxabcxxxabcxxxabcxxxabcxxxabcxxxabc
-    std::string reg = "((/d){3}/D{3}){2}{2}{2}";
+    std::string reg = "((/d){3}/D{3}){2}{2}{2}Z-A";
+//std::string reg = "-";
 
     Regex::RegexClient client;
 

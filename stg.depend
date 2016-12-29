@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1482970258 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483011770 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
@@ -53,7 +53,8 @@
 	<Wincrypt.h>
 	"IRandom.h"
 
-1482958574 c:\users\or_fins\desktop\newstgcpp\stg\include\irandom.h
+1483011834 c:\users\or_fins\desktop\newstgcpp\stg\include\irandom.h
+	<cstdint>
 
 1482958766 source:c:\users\or_fins\desktop\newstgcpp\stg\src\csrandom.cpp
 	"CSRandom.h"
@@ -62,7 +63,7 @@
 	<Windows.h>
 	<Wincrypt.h>
 
-1482967161 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
+1482970321 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
 	"ProcessorsHandler.h"
 	<stdexcept>
 	"IDelimiterProcessor.h"
@@ -106,7 +107,7 @@
 	<memory>
 	"IRegexParser.h"
 
-1482970037 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
+1483011673 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
 	"RegexClient.h"
 	<string>
 	<stdexcept>
@@ -114,6 +115,7 @@
 	"Collection.h"
 	"Multiplier.h"
 	"ProcessorsHandler.h"
+	"Range.h"
 	"RegexParser.h"
 	"Replacer.h"
 
@@ -157,4 +159,19 @@
 	"BracketsContentProcessor.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
+
+1483011689 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
+	"Range.h"
+	<iostream>
+	<stdexcept>
+	<string>
+	"Formatter.h"
+	"IMultiplier.h"
+	"IRegexParser.h"
+
+1483011556 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
+	"IDelimiterProcessor.h"
+	"IMultiplier.h"
+	"IRegexParser.h"
+	<string>
 

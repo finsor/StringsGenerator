@@ -9,7 +9,7 @@
 //#include "Or.h"
 #include "ProcessorsHandler.h"
 //#include "RandomString.h"
-//#include "Range.h"
+#include "Range.h"
 #include "RegexParser.h"
 #include "Replacer.h"
 
@@ -81,7 +81,7 @@ Regex::RegexClient::Processor(const std::string& regularExpression)
     Regex::Brackets brackets ( '(', ')' );
     Regex::Collection collection ( '[', ']', '^' );
     Regex::Multiplier multiplier ( '{', '}', ',' );
-//    Regex::Range range( '-' );
+    Regex::Range range( '-' );
 //    Regex::Or or_( '|' );
 //    Regex::RandomString randChar ( '.', 1, 1 );
 //    Regex::RandomString randString ( '*', 0, 255 );
@@ -89,10 +89,10 @@ Regex::RegexClient::Processor(const std::string& regularExpression)
     Regex::ProcessorsHandler processorsHandler(&multiplier);
     processorsHandler.AddProcessor(&brackets);
     processorsHandler.AddProcessor(&collection);
-//    delimitersHandler.AddProcessor(&range);
-//    delimitersHandler.AddProcessor(&or_);
-//    delimitersHandler.AddProcessor(&randChar);
-//    delimitersHandler.AddProcessor(&randString);
+    processorsHandler.AddProcessor(&range);
+//    processorsHandler.AddProcessor(&or_);
+//    processorsHandler.AddProcessor(&randChar);
+//    processorsHandler.AddProcessor(&randString);
 
     Regex::RegexParser parser( &processorsHandler );
 
