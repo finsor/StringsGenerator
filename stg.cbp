@@ -50,8 +50,11 @@
 		<Unit filename="include/IRandom.h" />
 		<Unit filename="include/IRegexParser.h" />
 		<Unit filename="include/Multiplier.h" />
+		<Unit filename="include/Or.h" />
 		<Unit filename="include/PrintableCharacters.h" />
 		<Unit filename="include/ProcessorsHandler.h" />
+		<Unit filename="include/RandomString.h" />
+		<Unit filename="include/Range.h" />
 		<Unit filename="include/RegexClient.h" />
 		<Unit filename="include/RegexParser.h" />
 		<Unit filename="include/Replacer.h" />
@@ -62,8 +65,11 @@
 		<Unit filename="src/CSRandom.cpp" />
 		<Unit filename="src/Collection.cpp" />
 		<Unit filename="src/Multiplier.cpp" />
+		<Unit filename="src/Or.cpp" />
 		<Unit filename="src/PrintableCharacters.cpp" />
 		<Unit filename="src/ProcessorsHandler.cpp" />
+		<Unit filename="src/RandomString.cpp" />
+		<Unit filename="src/Range.cpp" />
 		<Unit filename="src/RegexClient.cpp" />
 		<Unit filename="src/RegexParser.cpp" />
 		<Unit filename="src/Replacer.cpp" />

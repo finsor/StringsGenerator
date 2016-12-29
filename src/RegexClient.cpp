@@ -6,7 +6,7 @@
 #include "Brackets.h"
 #include "Collection.h"
 #include "Multiplier.h"
-//#include "Or.h"
+#include "Or.h"
 #include "ProcessorsHandler.h"
 #include "RandomString.h"
 #include "Range.h"
@@ -80,7 +80,7 @@ Regex::RegexClient::Processor(const std::string& regularExpression)
     Regex::Collection collection ( '[', ']', '^' );
     Regex::Multiplier multiplier ( '{', '}', ',' );
     Regex::Range range( '-' );
-//    Regex::Or or_( '|' );
+    Regex::Or or_( '|' );
     Regex::RandomString randChar ( '.', 1, 1 );
     Regex::RandomString randString ( '*', 0, 255 );
 
@@ -88,7 +88,7 @@ Regex::RegexClient::Processor(const std::string& regularExpression)
     processorsHandler.AddProcessor(&brackets);
     processorsHandler.AddProcessor(&collection);
     processorsHandler.AddProcessor(&range);
-//    processorsHandler.AddProcessor(&or_);
+    processorsHandler.AddProcessor(&or_);
     processorsHandler.AddProcessor(&randChar);
     processorsHandler.AddProcessor(&randString);
 
