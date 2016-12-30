@@ -10,18 +10,15 @@ std::string
 Regex::RegexParser::Parse(const std::string& regularExpression) const
 {
     std::string result;
-    std::string lastResult = "";
 
     std::string::const_iterator iter = regularExpression.begin();
     while ( iter < regularExpression.end() )
     {
-        lastResult = _processorsHandler->Process(
+        result += _processorsHandler->Process(
                          regularExpression,
                          iter,
                          *this,
-                         lastResult);
-
-        result += lastResult;
+                         result);
     }
 
     return ( result );

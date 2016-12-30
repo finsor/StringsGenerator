@@ -20,7 +20,8 @@ public:
     std::string Process(const std::string&              regularExpression,
                         std::string::const_iterator&    regexIterator,
                         const Regex::IRegexParser&      parser,
-                        const Regex::IMultiplier        *multiplier)
+                        const Regex::IMultiplier        *multiplier,
+                        std::string&                    destination)
     const;
 
 private:
@@ -36,7 +37,7 @@ private:
 
     // Function gets a collection
     // Returns a random character out of it
-    char GetOneChar(const std::string& characters) const;
+    char RandomChar(const std::string& characters) const;
 
     // Function gets parameters for a multiplier
     // Returns 1 if no multiplier provided
@@ -48,11 +49,12 @@ private:
     const;
 
     // Function returns the processed result of brackets' content
-    std::string GetCollection(const std::string&              regularExpression,
-                              std::string::const_iterator&    regexIterator,
-                              const Regex::IRegexParser&      parser,
-                              const Regex::IMultiplier        *multiplier,
-                              bool                            exclude)
+    std::string CreateCollection(const std::string&              regularExpression,
+                                 std::string::const_iterator&    regexIterator,
+                                 const Regex::IRegexParser&      parser,
+                                 const Regex::IMultiplier        *multiplier,
+                                 std::string&                    destination,
+                                 bool                            exclude)
     const;
 
     // Functions returns whether to collect from given collection

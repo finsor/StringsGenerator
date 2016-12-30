@@ -44,6 +44,7 @@
 		<Unit filename="include/CSRandom.h" />
 		<Unit filename="include/Collection.h" />
 		<Unit filename="include/Formatter.h" />
+		<Unit filename="include/IDelimiter.h" />
 		<Unit filename="include/IDelimiterProcessor.h" />
 		<Unit filename="include/IMultiplier.h" />
 		<Unit filename="include/IProcessorsHandler.h" />

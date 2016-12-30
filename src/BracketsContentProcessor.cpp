@@ -14,11 +14,14 @@ Regex::BracketsContentProcessor::Process(
     const std::string&              regularExpression,
     std::string::const_iterator&    regexIterator,
     const Regex::IRegexParser&      parser,
-    const Regex::IMultiplier        *multiplier)
+    const Regex::IMultiplier        *multiplier,
+    std::string&                    destination)
 const
 {
     std::string bracketsContent = GetContent(regularExpression, regexIterator);
     std::string parsedContent   = parser.Parse(bracketsContent);
+
+    std::cout << "bracketsContent=" << bracketsContent << " parsedContent=" << parsedContent << std::endl;
 
     return ( parser.Parse(parsedContent) );
 }

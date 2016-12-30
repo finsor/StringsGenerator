@@ -35,7 +35,7 @@ int DMain(int argc, char *argv[])
 int DebugRegex()
 {
 //    std::string reg = "1|(A{2}[A-Z]){3}";
-//    std::string reg = "1|2|3";
+//    std::string reg = "1|2";
 //    std::string reg = "3|1|2";
 //    std::string reg = "[A-Z]{3}...";
 //    std::string reg = "\\.{2}{3}";
@@ -60,8 +60,12 @@ int DebugRegex()
 
     // expected: xxxabcxxxabcxxxabcxxxabcxxxabcxxxabcxxxabcxxxabc
 //    std::string reg = "((/d){3}/D{3}){2}{2}{2}Z-A";
+    std::string reg = "([a\\-Z]{3})";
+
+//std::string reg = "A-Z";
+
 //std::string reg = "-";
-std::string reg = ".{}";
+//std::string reg = ".{}";
 
     Regex::RegexClient client;
 

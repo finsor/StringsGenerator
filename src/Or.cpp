@@ -7,7 +7,7 @@
 #include <algorithm>
 
 #include "IRegexParser.h"
-#include "Random.h"
+#include "CSRandom.h"
 #include "Formatter.h"
 
 
@@ -18,40 +18,54 @@ Regex::Or::Trigger() const
 }
 
 std::string
-Regex::Or::Process(const std::string& regularExpression,
-                        std::string::const_iterator& regexIterator,
-                        const IRegexParser& parser,
-                        std::string& dst,
-                        const std::string& lastResult) const
+Regex::Or::Process(
+    const std::string&              regularExpression,
+    std::string::const_iterator&    regexIterator,
+    const Regex::IRegexParser&      parser,
+    const Regex::IMultiplier        *multiplier,
+    std::string&                    destination)
+const
 {
     ++regexIterator;
 
-    std::string tmpRegex = regularExpression.substr(regexIterator - regularExpression.begin());
-    regexIterator += tmpRegex.size();
+    std::string optionOne = destination;
+    std::string optionTwo = ParseNext(regularExpression,
+                                      regexIterator,
+                                      parser);
 
-    if( !IsValid(tmpRegex) || !IsValid(lastResult))
-    {
-        std::string ex = Error::Formatter() <<
-        "Expected 2 options for '" << _delimiter <<
-        "' at" << regexIterator - regularExpression.begin();
-    }
+    destination.clear();
 
-    Random::Random randomizer;
+    std::cout << "in or, opt1=" << optionOne << std::endl;
+    std::cout << "in or, opt2=" << optionTwo << std::endl;
 
-    if(randomizer.Generate() % 2 == 0)
-        return ( "" );
-    else
-    {
-        dst.clear();
-
-        return ( parser.Parse(tmpRegex) );
-    }
+    return ( RandomalyChoose(optionOne, optionTwo) );
 }
 
 /* private */
 
-bool
-Regex::Or::IsValid(std::string str) const
+std::string
+Regex::Or::RandomalyChoose(const std::string& optionOne,
+                           const std::string& optionTwo)
+const
 {
-    return ( str.size() > 0 );
+    Random::CSRandom randomizer;
+
+    if(randomizer.Generate() % 2 == 0)
+        return ( optionOne );
+    else
+        return ( optionTwo );
+}
+
+std::string
+Regex::Or::ParseNext(const std::string& regularExpression,
+                     std::string::const_iterator& regexIterator,
+                     const Regex::IRegexParser& parser)
+const
+{
+    std::string tmpRegex = regularExpression.substr(regexIterator - regularExpression.begin());
+    regexIterator += tmpRegex.size();
+
+    std::cout << "in parsenext, tmpRegex=" << tmpRegex << std::endl;
+
+    return ( parser.Parse(tmpRegex) );
 }

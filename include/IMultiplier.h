@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "IRegexParser.h"
+
 
 namespace Regex
 {
@@ -17,12 +19,12 @@ public:
     virtual std::string Process(const std::string&              regularExpression,
                                 std::string::const_iterator&    regexIterator,
                                 const Regex::IRegexParser&      parser,
-                                const std::string&              stringToMultiply)
+                                const std::string&              destination)
     const = 0;
 
     virtual uint32_t GetMultiplier(const std::string&              regularExpression,
-                                std::string::const_iterator&    regexIterator,
-                                const Regex::IRegexParser&      parser)
+                                   std::string::const_iterator&    regexIterator,
+                                   const Regex::IRegexParser&      parser)
     const = 0;
 
     virtual std::string Multiply(const std::string& src,

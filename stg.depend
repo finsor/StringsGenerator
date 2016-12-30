@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1483013278 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483108670 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
@@ -8,33 +8,35 @@
 
 1482955077 c:\users\or_fins\desktop\newstgcpp\stg\main.h
 
-1482970290 source:c:\users\or_fins\desktop\newstgcpp\stg\src\bracketscontentprocessor.cpp
+1483107664 source:c:\users\or_fins\desktop\newstgcpp\stg\src\bracketscontentprocessor.cpp
 	"BracketsContentProcessor.h"
 	<iostream>
 	<stdexcept>
 	<string>
 	"Formatter.h"
 
-1482969163 c:\users\or_fins\desktop\newstgcpp\stg\include\bracketscontentprocessor.h
+1483105144 c:\users\or_fins\desktop\newstgcpp\stg\include\bracketscontentprocessor.h
 	"IDelimiterProcessor.h"
 	"IRegexParser.h"
 	"IMultiplier.h"
 
-1482960948 c:\users\or_fins\desktop\newstgcpp\stg\include\idelimiterprocessor.h
+1483105566 c:\users\or_fins\desktop\newstgcpp\stg\include\idelimiterprocessor.h
 	<string>
+	"IDelimiter.h"
 	"IRegexParser.h"
 	"IMultiplier.h"
 
 1482955753 c:\users\or_fins\desktop\newstgcpp\stg\include\iregexparser.h
 	<string>
 
-1482967107 c:\users\or_fins\desktop\newstgcpp\stg\include\imultiplier.h
+1483090811 c:\users\or_fins\desktop\newstgcpp\stg\include\imultiplier.h
 	<string>
+	"IRegexParser.h"
 
 1482961234 c:\users\or_fins\desktop\newstgcpp\stg\include\formatter.h
 	<sstream>
 
-1482966843 source:c:\users\or_fins\desktop\newstgcpp\stg\src\collection.cpp
+1483105382 source:c:\users\or_fins\desktop\newstgcpp\stg\src\collection.cpp
 	"Collection.h"
 	<string>
 	"BracketsContentProcessor.h"
@@ -42,7 +44,7 @@
 	"IRegexParser.h"
 	"PrintableCharacters.h"
 
-1482966843 c:\users\or_fins\desktop\newstgcpp\stg\include\collection.h
+1483105389 c:\users\or_fins\desktop\newstgcpp\stg\include\collection.h
 	<string>
 	"BracketsContentProcessor.h"
 	"IRegexParser.h"
@@ -63,26 +65,27 @@
 	<Windows.h>
 	<Wincrypt.h>
 
-1483013266 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
+1483107772 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
 	"ProcessorsHandler.h"
+	<algorithm>
 	<stdexcept>
 	"IDelimiterProcessor.h"
 	"IRegexParser.h"
 	"Formatter.h"
 
-1482966980 c:\users\or_fins\desktop\newstgcpp\stg\include\processorshandler.h
+1483106169 c:\users\or_fins\desktop\newstgcpp\stg\include\processorshandler.h
 	<vector>
 	<iostream>
 	"IProcessorsHandler.h"
 	"IDelimiterProcessor.h"
 	"IRegexParser.h"
 
-1482959115 c:\users\or_fins\desktop\newstgcpp\stg\include\iprocessorshandler.h
+1483105426 c:\users\or_fins\desktop\newstgcpp\stg\include\iprocessorshandler.h
 	<string>
 	"IDelimiterProcessor.h"
 	"IRegexParser.h"
 
-1482959909 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexparser.cpp
+1483107788 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexparser.cpp
 	"RegexParser.h"
 	<iostream>
 	<sstream>
@@ -107,20 +110,21 @@
 	<memory>
 	"IRegexParser.h"
 
-1483012588 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
+1483106716 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
 	"RegexClient.h"
 	<string>
 	<stdexcept>
 	"Brackets.h"
 	"Collection.h"
 	"Multiplier.h"
+	"Or.h"
 	"ProcessorsHandler.h"
 	"RandomString.h"
 	"Range.h"
 	"RegexParser.h"
 	"Replacer.h"
 
-1482970248 source:c:\users\or_fins\desktop\newstgcpp\stg\src\multiplier.cpp
+1483108744 source:c:\users\or_fins\desktop\newstgcpp\stg\src\multiplier.cpp
 	"Multiplier.h"
 	<iostream>
 	<string>
@@ -147,7 +151,7 @@
 	<map>
 	<string>
 
-1482969850 source:c:\users\or_fins\desktop\newstgcpp\stg\src\brackets.cpp
+1483107664 source:c:\users\or_fins\desktop\newstgcpp\stg\src\brackets.cpp
 	"Brackets.h"
 	<iostream>
 	<string>
@@ -155,13 +159,13 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1482969917 c:\users\or_fins\desktop\newstgcpp\stg\include\brackets.h
+1483105116 c:\users\or_fins\desktop\newstgcpp\stg\include\brackets.h
 	"string"
 	"BracketsContentProcessor.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483012581 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
+1483107730 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
 	"Range.h"
 	<iostream>
 	<stdexcept>
@@ -170,22 +174,43 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483012450 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
+1483105166 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
 	"IDelimiterProcessor.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
 	<string>
 
-1483013108 source:c:\users\or_fins\desktop\newstgcpp\stg\src\randomstring.cpp
+1483106222 source:c:\users\or_fins\desktop\newstgcpp\stg\src\randomstring.cpp
 	"RandomString.h"
 	<iostream>
 	<string>
 	"PrintableCharacters.h"
 	"CSRandom.h"
 
-1483013093 c:\users\or_fins\desktop\newstgcpp\stg\include\randomstring.h
+1483105166 c:\users\or_fins\desktop\newstgcpp\stg\include\randomstring.h
 	<string>
 	"IDelimiterProcessor.h"
 	"IMultiplier.h"
+	"IRegexParser.h"
+
+1483020585 c:\users\or_fins\desktop\newstgcpp\stg\include\idelimiter.h
+
+1483106984 source:c:\users\or_fins\desktop\newstgcpp\stg\src\or.cpp
+	"Or.h"
+	<iostream>
+	<algorithm>
+	"IRegexParser.h"
+	"CSRandom.h"
+	"Formatter.h"
+
+1483106961 c:\users\or_fins\desktop\newstgcpp\stg\include\or.h
+	<string>
+	"IDelimiterProcessor.h"
+	"IMultiplier.h"
+	"IRegexParser.h"
+
+1483020456 c:\users\or_fins\desktop\newstgcpp\stg\include\ilogicaldelimiterprocessor.h
+	<string>
+	"IDelimiter.h"
 	"IRegexParser.h"
 

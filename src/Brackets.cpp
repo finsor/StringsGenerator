@@ -16,14 +16,16 @@ Regex::Brackets::Process(
     const std::string&              regularExpression,
     std::string::const_iterator&    regexIterator,
     const Regex::IRegexParser&      parser,
-    const Regex::IMultiplier        *multiplier)
+    const Regex::IMultiplier        *multiplier,
+    std::string&                    destination)
 const
 {
     std::string parsedContent = BracketsContentProcessor::Process(
                                     regularExpression,
                                     regexIterator,
                                     parser,
-                                    multiplier);
+                                    multiplier,
+                                    destination);
 
     if( nullptr == multiplier || multiplier->Trigger() != *regexIterator )
         return ( parsedContent );

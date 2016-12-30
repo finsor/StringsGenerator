@@ -23,7 +23,8 @@ public:
     std::string Process(const std::string&              regularExpression,
                         std::string::const_iterator&    regexIterator,
                         const Regex::IRegexParser&      parser,
-                        const Regex::IMultiplier        *multiplier)
+                        const Regex::IMultiplier        *multiplier,
+                        std::string&                    destination)
     const;
 
 private:

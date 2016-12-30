@@ -22,10 +22,11 @@ public:
     }
 
     // Function returns the parsed content of the brackets.
-    virtual std::string Process(const std::string&      regularExpression,
-                        std::string::const_iterator&    regexIterator,
-                        const Regex::IRegexParser&      parser,
-                        const Regex::IMultiplier        *multiplier)
+    virtual std::string Process(const std::string&              regularExpression,
+                                std::string::const_iterator&    regexIterator,
+                                const Regex::IRegexParser&      parser,
+                                const Regex::IMultiplier        *multiplier,
+                                std::string&                    destination)
     const;
 
     // Returns content if OK or throws

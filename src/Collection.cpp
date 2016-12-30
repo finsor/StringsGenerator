@@ -13,16 +13,19 @@ Regex::Collection::Process(
     const std::string&              regularExpression,
     std::string::const_iterator&    regexIterator,
     const Regex::IRegexParser&      parser,
-    const Regex::IMultiplier        *multiplier)
+    const Regex::IMultiplier        *multiplier,
+    std::string&                    destination)
 const
 {
     bool exclude = ExcludeOrNot(regexIterator);
 
-    std::string collection = GetCollection(regularExpression,
-                                           regexIterator,
-                                           parser,
-                                           multiplier,
-                                           exclude);
+    std::string collection = CreateCollection(
+                                 regularExpression,
+                                 regexIterator,
+                                 parser,
+                                 multiplier,
+                                 destination,
+                                 exclude);
 
     if( 0 == collection.size() )
         return ( "" );
@@ -45,14 +48,14 @@ const
     std::string result;
 
     while( times-- > 0 )
-        result += GetOneChar(collection);
+        result += RandomChar(collection);
 
     return ( result );
 }
 
 
 char
-Regex::Collection::GetOneChar(const std::string& characters)
+Regex::Collection::RandomChar(const std::string& characters)
 const
 {
     Random::CSRandom randomizer;
@@ -61,10 +64,11 @@ const
 }
 
 uint32_t
-Regex::Collection::GetTimes(const std::string&              regularExpression,
-                            std::string::const_iterator&    regexIterator,
-                            const Regex::IRegexParser&      parser,
-                            const Regex::IMultiplier        *multiplier)
+Regex::Collection::GetTimes(
+    const std::string&              regularExpression,
+    std::string::const_iterator&    regexIterator,
+    const Regex::IRegexParser&      parser,
+    const Regex::IMultiplier        *multiplier)
 const
 {
     if( regexIterator < regularExpression.end() &&
@@ -81,18 +85,21 @@ const
 
 
 std::string
-Regex::Collection::GetCollection(const std::string&              regularExpression,
-                                 std::string::const_iterator&    regexIterator,
-                                 const Regex::IRegexParser&      parser,
-                                 const Regex::IMultiplier        *multiplier,
-                                 bool                            exclude)
+Regex::Collection::CreateCollection(
+    const std::string&              regularExpression,
+    std::string::const_iterator&    regexIterator,
+    const Regex::IRegexParser&      parser,
+    const Regex::IMultiplier        *multiplier,
+    std::string&                    destination,
+    bool                            exclude)
 const
 {
     std::string collection = BracketsContentProcessor::Process(
                                  regularExpression,
                                  regexIterator,
                                  parser,
-                                 multiplier);
+                                 multiplier,
+                                 destination);
 
     if( !exclude )
         return ( collection );

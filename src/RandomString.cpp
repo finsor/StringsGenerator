@@ -16,18 +16,20 @@ Regex::RandomString::Trigger() const
 }
 
 std::string
-Regex::RandomString::Process(const std::string&              regularExpression,
-                             std::string::const_iterator&    regexIterator,
-                             const Regex::IRegexParser&      parser,
-                             const Regex::IMultiplier        *multiplier)
+Regex::RandomString::Process(
+    const std::string&              regularExpression,
+    std::string::const_iterator&    regexIterator,
+    const Regex::IRegexParser&      parser,
+    const Regex::IMultiplier        *multiplier,
+    std::string&                    destination)
 const
 {
     ++regexIterator;
 
     std::string randomString = GenerateRandomString(regularExpression,
-                                                    regexIterator,
-                                                    parser,
-                                                    multiplier);
+                               regexIterator,
+                               parser,
+                               multiplier);
 
     return ( randomString );
 }
@@ -36,9 +38,9 @@ const
 
 std::string
 Regex::RandomString::GenerateRandomString(const std::string&              regularExpression,
-                             std::string::const_iterator&    regexIterator,
-                             const Regex::IRegexParser&      parser,
-                             const Regex::IMultiplier        *multiplier)
+        std::string::const_iterator&    regexIterator,
+        const Regex::IRegexParser&      parser,
+        const Regex::IMultiplier        *multiplier)
 const
 {
     uint32_t times = 1;
