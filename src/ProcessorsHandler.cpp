@@ -15,12 +15,10 @@ Regex::ProcessorsHandler::Process(const std::string&              regularExpress
                                   std::string&                    destination)
 const
 {
-    std::cout << "*regiter=" << *regexIterator << std::endl;
     IDelimiterProcessor *delimiterProcessor = GetProcessorByTrigger(*regexIterator);
 
     if( nullptr == delimiterProcessor )
     {
-        std::cout << "in null" << std::endl;
         if( _multiplyProcessor->Trigger() == *regexIterator )
         {
             throw std::runtime_error(StringHelper::Formatter() <<
@@ -31,7 +29,6 @@ const
     }
     else
     {
-        std::cout << "in process" << std::endl;
         return ( delimiterProcessor->Process(regularExpression,
                                              regexIterator,
                                              parser,

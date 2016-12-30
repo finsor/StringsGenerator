@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1483108670 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483118703 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
@@ -8,7 +8,7 @@
 
 1482955077 c:\users\or_fins\desktop\newstgcpp\stg\main.h
 
-1483107664 source:c:\users\or_fins\desktop\newstgcpp\stg\src\bracketscontentprocessor.cpp
+1483118255 source:c:\users\or_fins\desktop\newstgcpp\stg\src\bracketscontentprocessor.cpp
 	"BracketsContentProcessor.h"
 	<iostream>
 	<stdexcept>
@@ -36,7 +36,7 @@
 1482961234 c:\users\or_fins\desktop\newstgcpp\stg\include\formatter.h
 	<sstream>
 
-1483105382 source:c:\users\or_fins\desktop\newstgcpp\stg\src\collection.cpp
+1483118435 source:c:\users\or_fins\desktop\newstgcpp\stg\src\collection.cpp
 	"Collection.h"
 	<string>
 	"BracketsContentProcessor.h"
@@ -65,7 +65,7 @@
 	<Windows.h>
 	<Wincrypt.h>
 
-1483107772 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
+1483118418 source:c:\users\or_fins\desktop\newstgcpp\stg\src\processorshandler.cpp
 	"ProcessorsHandler.h"
 	<algorithm>
 	<stdexcept>
@@ -110,12 +110,13 @@
 	<memory>
 	"IRegexParser.h"
 
-1483106716 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
+1483118692 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
 	"RegexClient.h"
 	<string>
 	<stdexcept>
 	"Brackets.h"
 	"Collection.h"
+	"Literal.h"
 	"Multiplier.h"
 	"Or.h"
 	"ProcessorsHandler.h"
@@ -195,7 +196,7 @@
 
 1483020585 c:\users\or_fins\desktop\newstgcpp\stg\include\idelimiter.h
 
-1483106984 source:c:\users\or_fins\desktop\newstgcpp\stg\src\or.cpp
+1483118771 source:c:\users\or_fins\desktop\newstgcpp\stg\src\or.cpp
 	"Or.h"
 	<iostream>
 	<algorithm>
@@ -212,5 +213,20 @@
 1483020456 c:\users\or_fins\desktop\newstgcpp\stg\include\ilogicaldelimiterprocessor.h
 	<string>
 	"IDelimiter.h"
+	"IRegexParser.h"
+
+1483118409 source:c:\users\or_fins\desktop\newstgcpp\stg\src\literal.cpp
+	"Literal.h"
+	<iostream>
+	<stdexcept>
+	<string>
+	"IMultiplier.h"
+	"IRegexParser.h"
+	"Formatter.h"
+
+1483117094 c:\users\or_fins\desktop\newstgcpp\stg\include\literal.h
+	<string>
+	"IDelimiterProcessor.h"
+	"IMultiplier.h"
 	"IRegexParser.h"
 

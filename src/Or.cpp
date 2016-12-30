@@ -35,9 +35,6 @@ const
 
     destination.clear();
 
-    std::cout << "in or, opt1=" << optionOne << std::endl;
-    std::cout << "in or, opt2=" << optionTwo << std::endl;
-
     return ( RandomalyChoose(optionOne, optionTwo) );
 }
 
@@ -64,8 +61,6 @@ const
 {
     std::string tmpRegex = regularExpression.substr(regexIterator - regularExpression.begin());
     regexIterator += tmpRegex.size();
-
-    std::cout << "in parsenext, tmpRegex=" << tmpRegex << std::endl;
 
     return ( parser.Parse(tmpRegex) );
 }

@@ -5,6 +5,7 @@
 
 #include "Brackets.h"
 #include "Collection.h"
+#include "Literal.h"
 #include "Multiplier.h"
 #include "Or.h"
 #include "ProcessorsHandler.h"
@@ -20,7 +21,7 @@ Regex::RegexClient::Generate(std::string& regularExpression)
     std::string result   = Processor   (newRegex);
 
 #ifdef DEBUG
-    std::cout << "newRegex=" << newRegex << std::endl;
+    std::cerr << "newRegex=" << newRegex << std::endl;
 #endif // DEBUG
 
     return ( result );
@@ -78,19 +79,21 @@ Regex::RegexClient::Processor(const std::string& regularExpression)
 {
     Regex::Brackets brackets ( '(', ')' );
     Regex::Collection collection ( '[', ']', '^' );
+    Regex::Literal literal ('\\');
     Regex::Multiplier multiplier ( '{', '}', ',' );
-    Regex::Range range( '-' );
     Regex::Or or_( '|' );
     Regex::RandomString randChar ( '.', 1, 1 );
     Regex::RandomString randString ( '*', 0, 255 );
+    Regex::Range range( '-' );
 
     Regex::ProcessorsHandler processorsHandler(&multiplier);
     processorsHandler.AddProcessor(&brackets);
     processorsHandler.AddProcessor(&collection);
-    processorsHandler.AddProcessor(&range);
+    processorsHandler.AddProcessor(&literal);
     processorsHandler.AddProcessor(&or_);
     processorsHandler.AddProcessor(&randChar);
     processorsHandler.AddProcessor(&randString);
+    processorsHandler.AddProcessor(&range);
 
     Regex::RegexParser parser( &processorsHandler );
 

@@ -21,9 +21,7 @@ const
     std::string bracketsContent = GetContent(regularExpression, regexIterator);
     std::string parsedContent   = parser.Parse(bracketsContent);
 
-    std::cout << "bracketsContent=" << bracketsContent << " parsedContent=" << parsedContent << std::endl;
-
-    return ( parser.Parse(parsedContent) );
+    return ( parsedContent );
 }
 
 /* private */
