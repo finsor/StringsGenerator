@@ -1,10 +1,14 @@
 # depslib dependency file v1.0
-1483118703 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483133822 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
 	"main.h"
 	"RegexClient.h"
+	"SequenceCreator.h"
+	"SequenceCreationClient.h"
+	<cstdlib>
+	<time.h>
 
 1482955077 c:\users\or_fins\desktop\newstgcpp\stg\main.h
 
@@ -166,7 +170,7 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483107730 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
+1483120784 source:c:\users\or_fins\desktop\newstgcpp\stg\src\range.cpp
 	"Range.h"
 	<iostream>
 	<stdexcept>
@@ -174,8 +178,9 @@
 	"Formatter.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
+	"StringHelperStaticFunctions.h"
 
-1483105166 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
+1483119727 c:\users\or_fins\desktop\newstgcpp\stg\include\range.h
 	"IDelimiterProcessor.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
@@ -229,4 +234,38 @@
 	"IDelimiterProcessor.h"
 	"IMultiplier.h"
 	"IRegexParser.h"
+
+1483133940 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
+	<iostream>
+	<algorithm>
+	<string>
+
+1483120784 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
+	"StringHelperStaticFunctions.h"
+	<string>
+
+1483131812 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
+	"SequenceCreator.h"
+	<iostream>
+	<string>
+	"StringHelperStaticFunctions.h"
+
+1483134186 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
+	<cmath>
+	<string>
+	"ISequenceCreator.h"
+	"StringHelperStaticFunctions.h"
+
+1483134186 c:\users\or_fins\desktop\newstgcpp\stg\include\isequencecreator.h
+	<string>
+
+1483131927 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreationclient.cpp
+	"SequenceCreationClient.h"
+	<string>
+	"SequenceCreator.h"
+	"StringHelperStaticFunctions.h"
+
+1483131942 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreationclient.h
+	<string>
+	"ISequenceCreator.h"
 

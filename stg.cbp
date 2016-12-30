@@ -32,6 +32,9 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-fomit-frame-pointer" />
+			<Add option="-fexpensive-optimizations" />
+			<Add option="-Os" />
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 			<Add option="-m32" />
@@ -50,6 +53,8 @@
 		<Unit filename="include/IProcessorsHandler.h" />
 		<Unit filename="include/IRandom.h" />
 		<Unit filename="include/IRegexParser.h" />
+		<Unit filename="include/ISequenceCreator.h" />
+		<Unit filename="include/Literal.h" />
 		<Unit filename="include/Multiplier.h" />
 		<Unit filename="include/Or.h" />
 		<Unit filename="include/PrintableCharacters.h" />
@@ -59,12 +64,17 @@
 		<Unit filename="include/RegexClient.h" />
 		<Unit filename="include/RegexParser.h" />
 		<Unit filename="include/Replacer.h" />
+		<Unit filename="include/SequenceCreationClient.h" />
+		<Unit filename="include/SequenceCreator.h" />
+		<Unit filename="include/SequenceCreatorCStringVersion.h" />
+		<Unit filename="include/StringHelperStaticFunctions.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
 		<Unit filename="src/Brackets.cpp" />
 		<Unit filename="src/BracketsContentProcessor.cpp" />
 		<Unit filename="src/CSRandom.cpp" />
 		<Unit filename="src/Collection.cpp" />
+		<Unit filename="src/Literal.cpp" />
 		<Unit filename="src/Multiplier.cpp" />
 		<Unit filename="src/Or.cpp" />
 		<Unit filename="src/PrintableCharacters.cpp" />
@@ -74,6 +84,9 @@
 		<Unit filename="src/RegexClient.cpp" />
 		<Unit filename="src/RegexParser.cpp" />
 		<Unit filename="src/Replacer.cpp" />
+		<Unit filename="src/SequenceCreationClient.cpp" />
+		<Unit filename="src/SequenceCreator.cpp" />
+		<Unit filename="src/SequenceCreatorCStringVersion.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

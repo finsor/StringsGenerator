@@ -10,6 +10,7 @@
 #include "Formatter.h"
 #include "IMultiplier.h"
 #include "IRegexParser.h"
+#include "StringHelperStaticFunctions.h"
 
 char
 Regex::Range::Trigger()
@@ -33,7 +34,7 @@ const
     ++regexIterator;
 
     if( regularExpression.end() <= regexIterator ||
-            !IsSameType(start, stop) )
+            !StringHelper::IsSameType(start, stop) )
     {
         throw std::runtime_error(StringHelper::Formatter() <<
                                  "Error: invalid range");
@@ -45,19 +46,6 @@ const
 }
 
 /* private */
-
-bool
-Regex::Range::IsSameType(char a, char b)
-const
-{
-    return(
-              (isupper(a) && isupper(b))
-              ||
-              (islower(a) && islower(b))
-              ||
-              (isdigit(a) && isdigit(b))
-          );
-}
 
 uint32_t
 Regex::Range::GetAddition(char start, char stop)

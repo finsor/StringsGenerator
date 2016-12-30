@@ -30,8 +30,7 @@ public:
 private:
     char _delimiter;
 
-    // Function returns whether range limits are of same type
-    // For example, both are digits, or lower case letters.
+
     bool IsSameType(char a, char b) const;
 
     // Function gets range limits
