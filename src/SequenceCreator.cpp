@@ -2,20 +2,35 @@
 
 #ifdef DEBUG
 #include <iostream>
+#include <cstdlib>
 #endif // DEBUG
 
-#include <string>
+#include <cstring>
 
 #include "StringHelperStaticFunctions.h"
 
+Sequence::SequenceCreator::SequenceCreator(const char * start, const char * stop, int difference) :
+    ISequenceCreator(start, stop, difference), _end( std::strcmp(start, stop) == 0 )
+{
+    _current = new char[std::max(strlen(start), strlen(stop)) + 1];
+
+    strcpy(_current, _start);
+    _currentLength = strlen(_current);
+
+    _absDifference = std::abs(difference);
+    _sign = Sign(difference);
+}
+
 Sequence::SequenceCreator::~SequenceCreator()
 {
+    delete [] _current;
+
 #ifdef DEBUG
     std::cout << "~SequenceCreator" << std::endl;
 #endif // DEBUG
 }
 
-std::string
+const char *
 Sequence::SequenceCreator::GetNext()
 {
     ChangeCurrentByDifference();
@@ -23,31 +38,30 @@ Sequence::SequenceCreator::GetNext()
     return ( _current );
 }
 
-bool
+inline bool
 Sequence::SequenceCreator::End()
 const
 {
     return ( _end );
 }
+
 /* private */
 
 void
 Sequence::SequenceCreator::ChangeCurrentByDifference()
 {
     uint32_t times = _absDifference;
-    int sign  = Sign(_difference);
 
-    while( !(_end = _current.compare(_stop) == 0 ) && times > 0 )
+    while( !(_end = ( 0 == std::strcmp(_current, _stop) ) ) && times-- > 0 )
     {
-        ChangeCurrentBy(sign);
-        --times;
+        ChangeCurrentBy(_sign);
     }
 }
 
 void
 Sequence::SequenceCreator::ChangeCurrentBy(int sign)
 {
-    int index = _current.size() - 1;
+    int index = _currentLength - 1;
 
     while ( index > -1 &&
             _current[index] == HighestOfChar(_current[index], sign) )
@@ -62,20 +76,38 @@ Sequence::SequenceCreator::ChangeCurrentBy(int sign)
     }
     else if (sign > 0)
     {
-        _current = StringHelper::ShiftRight(_current);
-        _current[0] = DecadeOfChar(_stop[_stop.size() - _current.size()], sign);
+        ShiftRight(_current);
+        _currentLength++;
+
+        _current[0] = DecadeOfChar(_stop[_stopLength - _currentLength], sign);
     }
     else if (sign < 0)
     {
-        _current = StringHelper::ShiftLeft(_current);
+        ShiftLeft(_current);
+        --_currentLength;
     }
 
-    if(_current[0] == '0')
+    while( _current[0] == '0' )
     {
-        _current = StringHelper::StripFromLeft(_current, '0');
+        ShiftLeft(_current);
+        --_currentLength;
     }
 }
 
+inline void
+Sequence::SequenceCreator::ShiftLeft(char * buffer)
+{
+    while( *buffer++ = *buffer );
+}
+
+inline void
+Sequence::SequenceCreator::ShiftRight(char * buffer)
+{
+    char *iter = buffer + strlen(buffer) + 1;
+
+    while( iter!= buffer )
+        *iter-- = *iter;
+}
 
 char
 Sequence::SequenceCreator::HighestOfChar(char c, int sign)
@@ -84,30 +116,30 @@ const
     if(isupper(c))
     {
         if(sign > 0)
-            return 'Z';
+            return ( 'Z' );
         return 'A';
     }
     if(islower(c))
     {
         if(sign > 0)
-            return 'z';
-        return 'a';
+            return ( 'z' );
+        return ( 'a' );
     }
     if(isdigit(c))
     {
         if(sign > 0)
-            return '9';
-        return '0';
+            return ( '9' );
+        return ( '0' );
     }
 
-    return 0;
+    return ( 0 );
 }
 
 char
 Sequence::SequenceCreator::LowestOfChar(char c, int sign)
 const
 {
-    return (HighestOfChar(c, -sign));
+    return ( HighestOfChar(c, -sign) );
 }
 
 char

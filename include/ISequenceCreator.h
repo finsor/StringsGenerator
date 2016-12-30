@@ -1,6 +1,7 @@
 #pragma once
 
-#include <string>
+#include <cstring>
+#include <cstdint>
 
 
 namespace Sequence
@@ -8,17 +9,21 @@ namespace Sequence
 class ISequenceCreator
 {
 public:
-    ISequenceCreator(std::string start, std::string stop, int difference) :
+    ISequenceCreator(const char *start, const char *stop, int difference) :
         _start(start), _stop(stop), _difference(difference)
-    {}
+    {
+        _startLength = strlen(_start);
+        _stopLength  = strlen(_stop);
+    }
 
     virtual ~ISequenceCreator() {}
 
-    virtual std::string GetNext() = 0;
+    virtual const char * GetNext() = 0;
     virtual bool End() const = 0;
 
 protected:
-    std::string _start, _stop;
+    const char *_start, *_stop;
+    uint32_t _startLength, _stopLength;
     int _difference;
 };
 }

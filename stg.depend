@@ -1,12 +1,11 @@
 # depslib dependency file v1.0
-1483133822 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483137574 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
 	"main.h"
 	"RegexClient.h"
 	"SequenceCreator.h"
-	"SequenceCreationClient.h"
 	<cstdlib>
 	<time.h>
 
@@ -244,20 +243,22 @@
 	"StringHelperStaticFunctions.h"
 	<string>
 
-1483131812 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
+1483138225 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
 	"SequenceCreator.h"
 	<iostream>
-	<string>
+	<cstdlib>
+	<cstring>
 	"StringHelperStaticFunctions.h"
 
-1483134186 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
+1483138225 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
 	<cmath>
-	<string>
+	<cstring>
 	"ISequenceCreator.h"
 	"StringHelperStaticFunctions.h"
 
-1483134186 c:\users\or_fins\desktop\newstgcpp\stg\include\isequencecreator.h
-	<string>
+1483135410 c:\users\or_fins\desktop\newstgcpp\stg\include\isequencecreator.h
+	<cstring>
+	<cstdint>
 
 1483131927 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreationclient.cpp
 	"SequenceCreationClient.h"

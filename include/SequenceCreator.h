@@ -1,11 +1,11 @@
 #pragma once
 
 #include <cmath>
-#include <string>
-
+#include <cstring>
 
 #include "ISequenceCreator.h"
 #include "StringHelperStaticFunctions.h"
+
 
 namespace Sequence
 {
@@ -13,26 +13,25 @@ class SequenceCreator : public ISequenceCreator
 {
 public:
 
-    SequenceCreator(std::string start, std::string stop, int difference) :
-        ISequenceCreator(start, stop, difference), _end( start.compare(stop) == 0 )
-    {
-        _current = start;
-        _absDifference = std::abs(difference);
-    }
+    SequenceCreator(const char * start, const char * stop, int difference);
 
     virtual ~SequenceCreator();
 
-    std::string GetNext();
+    const char * GetNext();
 
-    bool End() const;
+    inline bool End() const;
 
 private:
-    std::string _current;
+    char * _current;
+    uint32_t _currentLength;
     uint32_t _absDifference;
+    int _sign;
     bool _end;
 
     void ChangeCurrentByDifference();
     void ChangeCurrentBy(int sign);
+    inline void ShiftLeft(char * buffer);
+    inline void ShiftRight(char * buffer);
 
     char HighestOfChar(char c, int sign) const;
     char LowestOfChar (char c, int sign) const;

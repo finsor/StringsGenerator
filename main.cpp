@@ -6,7 +6,7 @@
 #include "main.h"
 #include "RegexClient.h"
 #include "SequenceCreator.h"
-#include "SequenceCreationClient.h"
+//#include "SequenceCreationClient.h"
 
 #include <cstdlib>
 #include <time.h>
@@ -16,52 +16,30 @@ int main(int argc, char *argv[])
 #ifdef DEBUG
     return ( DMain(argc, argv) );
 #else
-//    return ( RMain(argc, argv) );
-
-    time_t b = clock();
-
-    std::string start = "aaa123";
-    std::string stop  =  "1";
-    int difference = -1;
-
-    Sequence::SequenceCreator s(start, stop, difference);
-
-    while( !s.End() )
-        std::cout << s.GetNext() << std::endl;
-
-
-
-//    Sequence::SequenceCreationClient client;
-
-//    if( !client.Sign(start, stop, difference) )
-//    {
-//        std::cerr << "invalid sequence" << std::endl;
-//        return ( 0 );
-//    }
-//    else
-//    {
-//        std::cout << start << std::endl;
-//
-//        while( !client.End() )
-//        {
-//            std::cout << client.Next() << std::endl;
-//        }
-//
-//    }
-
-    time_t e = clock();
-
-    std::cout << "time in seconds: " << (double)(e-b)/(CLOCKS_PER_SEC) << std::endl;
-
-    system("pause");
-
-    return ( 0 );
+    return ( RMain(argc, argv) );
 #endif // DEBUG
 }
 
 #ifndef DEBUG
 int RMain(int argc, char *argv[])
 {
+    time_t b = clock();
+
+    char start[] =
+    "10";
+    char stop[] =
+    "0";
+
+    Sequence::SequenceCreator sc(start, stop, -1);
+
+    while( !sc.End() )
+        std::cout << sc.GetNext() << '\n';
+
+
+    time_t e = clock();
+
+    std::cerr << "time in seconds: " << (double)(e-b)/(CLOCKS_PER_SEC) << std::endl;
+
     return ( 0 );
 }
 
@@ -122,36 +100,16 @@ int DebugRegex()
     return ( 0 );
 }
 
+
 int DebugRange()
 {
-    char str[] = "original";
+    char start[] = "1";
+    char stop[] = "aaa123";
 
-    StringHelper::ShiftLeft(str);
+    Sequence::SequenceCreator sc(start, stop, 1);
 
-    std::cout << str << std::endl;
-
-    return 0;
-    std::string start = "123";
-    std::string stop  =  "1";
-    int difference = -1;
-
-    Sequence::SequenceCreationClient client;
-
-    if( !client.Sign(start, stop, difference) )
-    {
-        std::cerr << "invalid sequence" << std::endl;
-        return ( 0 );
-    }
-    else
-    {
-        std::cout << start << std::endl;
-
-        while( !client.End() )
-        {
-            std::cout << client.Next() << std::endl;
-        }
-
-    }
+    while( !sc.End() )
+        std::cout << sc.GetNext() << std::endl;
 
     return ( 0 );
 }
