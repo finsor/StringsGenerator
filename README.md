@@ -1,5 +1,7 @@
 # StringsGenerator
 
+Please read as raw....
+
 REGEX  
 Used to reverse the original use of regular expressions.  
 For example, the following:  
