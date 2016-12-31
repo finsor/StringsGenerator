@@ -7,6 +7,7 @@
 
 #include <cstring>
 
+#include "StaticSequenceFunctions.h"
 #include "StringHelperStaticFunctions.h"
 
 Sequence::SequenceCreator::SequenceCreator(const char * start, const char * stop, int difference) :
@@ -18,16 +19,12 @@ Sequence::SequenceCreator::SequenceCreator(const char * start, const char * stop
     _currentLength = strlen(_current);
 
     _absDifference = std::abs(difference);
-    _sign = Sign(difference);
+    _sign = Sequence::Sign(difference);
 }
 
 Sequence::SequenceCreator::~SequenceCreator()
 {
     delete [] _current;
-
-#ifdef DEBUG
-    std::cout << "~SequenceCreator" << std::endl;
-#endif // DEBUG
 }
 
 const char *
@@ -154,9 +151,4 @@ const
     return '9';
 }
 
-int
-Sequence::SequenceCreator::Sign(int i)
-const
-{
-    return ((i>0) - (i<0));
-}
+

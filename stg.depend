@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1483137574 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483195839 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
 	"main.h"
 	"RegexClient.h"
-	"SequenceCreator.h"
+	"SequenceCreationClient.h"
 	<cstdlib>
 	<time.h>
 
@@ -128,7 +128,7 @@
 	"RegexParser.h"
 	"Replacer.h"
 
-1483108744 source:c:\users\or_fins\desktop\newstgcpp\stg\src\multiplier.cpp
+1483196011 source:c:\users\or_fins\desktop\newstgcpp\stg\src\multiplier.cpp
 	"Multiplier.h"
 	<iostream>
 	<string>
@@ -234,7 +234,7 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483133940 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
+1483193339 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
 	<iostream>
 	<algorithm>
 	<string>
@@ -243,14 +243,15 @@
 	"StringHelperStaticFunctions.h"
 	<string>
 
-1483138225 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
+1483191109 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
 	"SequenceCreator.h"
 	<iostream>
 	<cstdlib>
 	<cstring>
+	"StaticSequenceFunctions.h"
 	"StringHelperStaticFunctions.h"
 
-1483138225 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
+1483191068 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
 	<cmath>
 	<cstring>
 	"ISequenceCreator.h"
@@ -260,13 +261,18 @@
 	<cstring>
 	<cstdint>
 
-1483131927 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreationclient.cpp
+1483195151 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreationclient.cpp
 	"SequenceCreationClient.h"
-	<string>
+	<iostream>
+	<cstring>
 	"SequenceCreator.h"
+	"StaticSequenceFunctions.h"
 	"StringHelperStaticFunctions.h"
 
-1483131942 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreationclient.h
+1483194889 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreationclient.h
 	<string>
 	"ISequenceCreator.h"
+
+1483193116 c:\users\or_fins\desktop\newstgcpp\stg\include\staticsequencefunctions.h
+	<cctype>
 

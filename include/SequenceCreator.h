@@ -36,7 +36,5 @@ private:
     char HighestOfChar(char c, int sign) const;
     char LowestOfChar (char c, int sign) const;
     char DecadeOfChar (char c, int sign) const;
-
-    int Sign(int i) const;
 };
 }

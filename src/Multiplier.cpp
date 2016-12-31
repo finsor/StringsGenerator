@@ -57,9 +57,13 @@ Regex::Multiplier::GetMultiplier(const std::string&              regularExpressi
                                  const Regex::IRegexParser&      parser)
 const
 {
-    std::string bracketsParsedContent = BracketsContentProcessor::GetContent(
+    std::string bracketsParsedContent;
+    bracketsParsedContent = BracketsContentProcessor::Process(
                                             regularExpression,
-                                            regexIterator);
+                                            regexIterator,
+                                            parser,
+                                            this,
+                                            bracketsParsedContent);
 
     uint32_t multiplier = GetMultiplier(bracketsParsedContent);
 

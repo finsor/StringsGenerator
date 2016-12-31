@@ -5,8 +5,8 @@
 
 #include "main.h"
 #include "RegexClient.h"
-#include "SequenceCreator.h"
-//#include "SequenceCreationClient.h"
+//#include "SequenceCreator.h"
+#include "SequenceCreationClient.h"
 
 #include <cstdlib>
 #include <time.h>
@@ -23,6 +23,8 @@ int main(int argc, char *argv[])
 #ifndef DEBUG
 int RMain(int argc, char *argv[])
 {
+
+
     time_t b = clock();
 
     char start[] =
@@ -51,7 +53,8 @@ int RegexCMDParser(int argc, char *argv[])
 #else
 int DMain(int argc, char *argv[])
 {
-    return ( DebugRange() );
+    return ( DebugRegex() );
+//    return ( DebugRange() );
 }
 
 int DebugRegex()
@@ -68,7 +71,6 @@ int DebugRegex()
 //    std::string reg = "aaa[0-9]aaa";
 //    std::string reg = "/W";
 //    std::string reg = "[(300)]";
-//    std::string reg = "(http:\\/\\/)/?www\\.google\\.com";
 //    std::string reg = "123|/d{3}";
 //    std::string reg = "/d{3,4}";
 //    std::string reg = "/d{8,12}";
@@ -84,7 +86,7 @@ int DebugRegex()
 //    std::string reg = "((/d){3}/D{3}){2}{2}{2}Z-A|2|3";
 //    std::string reg = "([a\\-Z]{3})";
 //
-    std::string reg = "[A\\-Z]";
+//    std::string reg = "[A\\-Z]";
 //    std::string reg = "\\[AZ";
 //
 //    std::string reg = "A-Z";
@@ -92,6 +94,9 @@ int DebugRegex()
 //    std::string reg = "-";
 //    std::string reg = ".{}";
 
+    std::string reg = "(http:\\/\\/)/?www\\.google\\.com";
+
+//    std::string reg = "(a){[01]}";
     Regex::RegexClient client;
 
     std::cout << client.Generate(reg) << std::endl;
@@ -103,13 +108,15 @@ int DebugRegex()
 
 int DebugRange()
 {
-    char start[] = "1";
-    char stop[] = "aaa123";
+    char start[] = "10";
+    char stop[] = "00";
 
-    Sequence::SequenceCreator sc(start, stop, 1);
+    Sequence::SequenceCreationClient client;
 
-    while( !sc.End() )
-        std::cout << sc.GetNext() << std::endl;
+    if( !client.GenerateSequence(start, stop, 3) )
+    {
+        std::cerr << "Invalid sequence !" << std::endl;
+    }
 
     return ( 0 );
 }

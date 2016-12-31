@@ -64,7 +64,9 @@
 		<Unit filename="include/RegexClient.h" />
 		<Unit filename="include/RegexParser.h" />
 		<Unit filename="include/Replacer.h" />
+		<Unit filename="include/SequenceCreationClient.h" />
 		<Unit filename="include/SequenceCreator.h" />
+		<Unit filename="include/StaticSequenceFunctions.h" />
 		<Unit filename="include/StringHelperStaticFunctions.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
@@ -82,6 +84,7 @@
 		<Unit filename="src/RegexClient.cpp" />
 		<Unit filename="src/RegexParser.cpp" />
 		<Unit filename="src/Replacer.cpp" />
+		<Unit filename="src/SequenceCreationClient.cpp" />
 		<Unit filename="src/SequenceCreator.cpp" />
 		<Extensions>
 			<code_completion />
