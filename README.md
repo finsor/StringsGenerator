@@ -5,7 +5,7 @@ Please read as raw....
 REGEX  
 Used to reverse the original use of regular expressions.  
 For example, the following:  
-  
+(http:\\/\\/)/?www\\.google\\.com
 generates either "http://www.google.com" or "www.google.com".  
   
 Very useful for creating passwords, or key vectors when combined with SEQUENCE.  
