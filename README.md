@@ -8,7 +8,7 @@ For example, the following:
 (http:\\/\\/)/?www\\.google\\.com
 generates either "http://www.google.com" or "www.google.com".  
   
-Very useful for creating passwords, or key vectors when combined with SEQUENCE.  
+Very useful for creating passwords.
   
 Usage as of Dec 2016:  
  \  Literal - escape any of the following.  
