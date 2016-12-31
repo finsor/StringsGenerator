@@ -32,7 +32,7 @@ Regex::RegexClient::UsageString()
 {
     return (
 "\
- \\ Literal - escape any of the following.\n\
+ \\  Literal - escape any of the following.\n\
 ( ) Brackets that contain a regular expression. Used for Ordering.\n\
 [ ] Brackets that contain a regular expression that represents a characters collection.\n\
     Randomly returns a character from result, or not from result if used with '^'.\n\

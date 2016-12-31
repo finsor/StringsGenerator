@@ -13,6 +13,14 @@ Sequence::SequenceCreationClient::~SequenceCreationClient()
     delete ( _sequenceCreator );
 }
 
+std::string
+Sequence::SequenceCreationClient::UsageString()
+{
+    return (
+""
+            );
+}
+
 bool
 Sequence::SequenceCreationClient::GenerateSequence(
     std::string start,

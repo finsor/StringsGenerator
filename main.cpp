@@ -5,7 +5,6 @@
 
 #include "main.h"
 #include "RegexClient.h"
-//#include "SequenceCreator.h"
 #include "SequenceCreationClient.h"
 
 #include <cstdlib>
@@ -14,7 +13,7 @@
 int main(int argc, char *argv[])
 {
 #ifdef DEBUG
-    return ( DMain(argc, argv) );
+    return ( DMain() );
 #else
     return ( RMain(argc, argv) );
 #endif // DEBUG
@@ -23,35 +22,67 @@ int main(int argc, char *argv[])
 #ifndef DEBUG
 int RMain(int argc, char *argv[])
 {
+    if( argc > 1 )
+    {
+        if( 0 == strcmp(argv[1], "regex") )
+            return ( RegexMain(argc-2, argv+2) );
 
+        if( 0 == strcmp(argv[1], "sequence") )
+            return ( SequenceMain(argc-2, argv+2) );
+    }
 
-    time_t b = clock();
-
-    char start[] =
-    "10";
-    char stop[] =
-    "0";
-
-    Sequence::SequenceCreator sc(start, stop, -1);
-
-    while( !sc.End() )
-        std::cout << sc.GetNext() << '\n';
-
-
-    time_t e = clock();
-
-    std::cerr << "time in seconds: " << (double)(e-b)/(CLOCKS_PER_SEC) << std::endl;
-
-    return ( 0 );
+    return ( PrintGeneralUsage(argv[0]) );
 }
 
-int RegexCMDParser(int argc, char *argv[])
+int RegexMain(int argc, char *argv[])
 {
+    Regex::RegexClient client;
+
+    if( argc == 1 )
+    {
+        try
+        {
+            std::string regularExpression(argv[0]);
+            std::cout << client.Generate(regularExpression) << std::endl;
+        }
+        catch ( std::exception& ex )
+        {
+            std::cerr << ex.what() << std::endl;
+        }
+
+    }
+    else
+    {
+        std::cerr << client.UsageString() << std::endl;
+    }
 
     return ( 0 );
 }
-#else
-int DMain(int argc, char *argv[])
+
+int SequenceMain(int argc, char *argv[])
+{
+    Sequence::SequenceCreationClient client;
+
+    std::cerr << client.UsageString() << std::endl;
+
+    return ( 0 );
+}
+
+int PrintGeneralUsage(char * programName)
+{
+    std::cerr << "\
+Program Usage:\n\
+\n\
+stg regex       [regular expression]\n\
+stg sequence    [before:start:separator:stop:after[:absolute difference]]\
+" << std::endl;
+
+    return ( 0 );
+}
+
+#else // #ifdef DEBUG
+
+int DMain()
 {
     return ( DebugRegex() );
 //    return ( DebugRange() );

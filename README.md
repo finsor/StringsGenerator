@@ -64,6 +64,6 @@ a7
 a9  
 b1  
   
-Probably not a useful sequence, but you got the idea.  
+Probably not a useful sequence, but you got the idea - It's great for password bruteforcing !
   
 Or Fins

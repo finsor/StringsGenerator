@@ -24,6 +24,8 @@ public:
                            std::string separator    = "\n",
                            std::string after        = "");
 
+    std::string UsageString();
+
 private:
 
     Sequence::ISequenceCreator *_sequenceCreator;
