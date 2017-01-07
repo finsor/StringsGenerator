@@ -54,6 +54,7 @@
 		<Unit filename="include/IRandom.h" />
 		<Unit filename="include/IRegexParser.h" />
 		<Unit filename="include/ISequenceCreator.h" />
+		<Unit filename="include/ISequenceType.h" />
 		<Unit filename="include/Literal.h" />
 		<Unit filename="include/Multiplier.h" />
 		<Unit filename="include/Or.h" />
@@ -66,6 +67,7 @@
 		<Unit filename="include/Replacer.h" />
 		<Unit filename="include/SequenceCreationClient.h" />
 		<Unit filename="include/SequenceCreator.h" />
+		<Unit filename="include/SequenceType.h" />
 		<Unit filename="include/StaticSequenceFunctions.h" />
 		<Unit filename="include/StringHelperStaticFunctions.h" />
 		<Unit filename="main.cpp" />
@@ -86,6 +88,9 @@
 		<Unit filename="src/Replacer.cpp" />
 		<Unit filename="src/SequenceCreationClient.cpp" />
 		<Unit filename="src/SequenceCreator.cpp" />
+		<Unit filename="src/SequenceType.cpp" />
+		<Unit filename="src/StaticSequenceFunctions.cpp" />
+		<Unit filename="src/StringHelperStaticFunctions.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

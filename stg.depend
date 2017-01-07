@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1483212851 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483790812 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
 	"main.h"
 	"RegexClient.h"
 	"SequenceCreationClient.h"
+	"SequenceType.h"
+	"SequenceCreator.h"
 	<cstdlib>
 	<time.h>
 
@@ -234,34 +236,37 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483193339 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
+1483789518 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
 	<iostream>
 	<algorithm>
 	<string>
 
-1483120784 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
+1483789687 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
 	"StringHelperStaticFunctions.h"
-	<string>
 
-1483191109 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
+1483790863 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
 	"SequenceCreator.h"
 	<iostream>
 	<cstdlib>
 	<cstring>
+	<stdexcept>
+	"Formatter.h"
 	"StaticSequenceFunctions.h"
 	"StringHelperStaticFunctions.h"
 
-1483191068 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
+1483790765 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreator.h
 	<cmath>
 	<cstring>
 	"ISequenceCreator.h"
+	"ISequenceType.h"
+	"SequenceType.h"
 	"StringHelperStaticFunctions.h"
 
-1483135410 c:\users\or_fins\desktop\newstgcpp\stg\include\isequencecreator.h
+1483790849 c:\users\or_fins\desktop\newstgcpp\stg\include\isequencecreator.h
 	<cstring>
 	<cstdint>
 
-1483195151 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreationclient.cpp
+1483790856 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreationclient.cpp
 	"SequenceCreationClient.h"
 	<iostream>
 	<cstring>
@@ -269,10 +274,33 @@
 	"StaticSequenceFunctions.h"
 	"StringHelperStaticFunctions.h"
 
-1483194889 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreationclient.h
+1483213668 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencecreationclient.h
 	<string>
 	"ISequenceCreator.h"
 
-1483193116 c:\users\or_fins\desktop\newstgcpp\stg\include\staticsequencefunctions.h
+1483789791 c:\users\or_fins\desktop\newstgcpp\stg\include\staticsequencefunctions.h
 	<cctype>
+	<cstdint>
+	<cstring>
+
+1483789129 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencetype.cpp
+	"SequenceType.h"
+	<ostream>
+	<stdexcept>
+	<string>
+	"ISequenceType.h"
+	"Formatter.h"
+	"StaticSequenceFunctions.h"
+	"StringHelperStaticFunctions.h"
+
+1483788040 c:\users\or_fins\desktop\newstgcpp\stg\include\sequencetype.h
+	<iostream>
+	<string>
+	"ISequenceType.h"
+
+1483788842 c:\users\or_fins\desktop\newstgcpp\stg\include\isequencetype.h
+	<string>
+
+1483789750 source:c:\users\or_fins\desktop\newstgcpp\stg\src\staticsequencefunctions.cpp
+	"StaticSequenceFunctions.h"
 

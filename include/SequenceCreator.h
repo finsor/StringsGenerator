@@ -4,6 +4,8 @@
 #include <cstring>
 
 #include "ISequenceCreator.h"
+#include "ISequenceType.h"
+#include "SequenceType.h"
 #include "StringHelperStaticFunctions.h"
 
 
@@ -13,28 +15,30 @@ class SequenceCreator : public ISequenceCreator
 {
 public:
 
-    SequenceCreator(const char * start, const char * stop, int difference);
+    SequenceCreator(const std::string& start,
+                    const std::string& stop,
+                    int difference);
 
-    virtual ~SequenceCreator();
+    SequenceCreator(const char * start,
+                    const char * stop,
+                    int difference);
 
-    const char * GetNext();
+    virtual ~SequenceCreator() {}
 
-    inline bool End() const;
+    void CalculateNext();
+    const char * Get();
+    bool End();
 
 private:
-    char * _current;
-    uint32_t _currentLength;
+
+    SequenceType _start;
+    SequenceType _current;
+    SequenceType _stop;
+
     uint32_t _absDifference;
+    int _difference;
     int _sign;
-    bool _end;
 
-    void ChangeCurrentByDifference();
-    void ChangeCurrentBy(int sign);
-    inline void ShiftLeft(char * buffer);
-    inline void ShiftRight(char * buffer);
-
-    char HighestOfChar(char c, int sign) const;
-    char LowestOfChar (char c, int sign) const;
-    char DecadeOfChar (char c, int sign) const;
+    void Create(int difference);
 };
 }

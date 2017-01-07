@@ -9,21 +9,12 @@ namespace Sequence
 class ISequenceCreator
 {
 public:
-    ISequenceCreator(const char *start, const char *stop, int difference) :
-        _start(start), _stop(stop), _difference(difference)
-    {
-        _startLength = strlen(_start);
-        _stopLength  = strlen(_stop);
-    }
 
+    ISequenceCreator()          {}
     virtual ~ISequenceCreator() {}
 
-    virtual const char * GetNext() = 0;
-    virtual bool End() const = 0;
+    virtual const char *    Get()   = 0;
+    virtual bool            End()    = 0;
 
-protected:
-    const char *_start, *_stop;
-    uint32_t _startLength, _stopLength;
-    int _difference;
 };
 }

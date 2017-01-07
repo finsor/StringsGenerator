@@ -6,149 +6,74 @@
 #endif // DEBUG
 
 #include <cstring>
+#include <stdexcept>
 
+#include "Formatter.h"
 #include "StaticSequenceFunctions.h"
 #include "StringHelperStaticFunctions.h"
 
-Sequence::SequenceCreator::SequenceCreator(const char * start, const char * stop, int difference) :
-    ISequenceCreator(start, stop, difference), _end( std::strcmp(start, stop) == 0 )
+
+Sequence::SequenceCreator::SequenceCreator(
+    const std::string& start,
+    const std::string& stop,
+    int difference) :
+    _start(start),
+    _current(start),
+    _stop(stop)
 {
-    _current = new char[std::max(strlen(start), strlen(stop)) + 1];
-
-    strcpy(_current, _start);
-    _currentLength = strlen(_current);
-
-    _absDifference = std::abs(difference);
-    _sign = Sequence::Sign(difference);
+    Create(difference);
 }
 
-Sequence::SequenceCreator::~SequenceCreator()
+Sequence::SequenceCreator::SequenceCreator(
+    const char * start,
+    const char * stop,
+    int difference) :
+    _start(start),
+    _current(start),
+    _stop(stop)
 {
-    delete [] _current;
+    Create(difference);
+}
+
+void
+Sequence::SequenceCreator::CalculateNext()
+{
+    uint32_t times = _absDifference;
+
+    while( times-- > 0 )
+    {
+        _current += _sign;
+    }
 }
 
 const char *
-Sequence::SequenceCreator::GetNext()
+Sequence::SequenceCreator::Get()
 {
-    ChangeCurrentByDifference();
-
     return ( _current );
 }
 
-inline bool
+bool
 Sequence::SequenceCreator::End()
-const
 {
-    return ( _end );
+    if( _difference < 0 && _current < _stop )
+        return ( true );
+
+    if ( _difference > 0 && _current > _stop )
+        return ( true );
+
+    return ( false );
 }
 
 /* private */
 
 void
-Sequence::SequenceCreator::ChangeCurrentByDifference()
+Sequence::SequenceCreator::Create(int difference)
 {
-    uint32_t times = _absDifference;
+    if( !StringHelper::Reverse_SameTypeCharacters(_start, _stop, _start.operator std::string().size()) )
+        throw std::domain_error(StringHelper::Formatter() << "Limits are not of same type: " << _start << ", " << _stop);
 
-    while( !(_end = ( 0 == std::strcmp(_current, _stop) ) ) && times-- > 0 )
-    {
-        ChangeCurrentBy(_sign);
-    }
+
+    _difference     = difference;
+    _absDifference  = std::abs(_difference);
+    _sign           = Sequence::Sign(_difference);
 }
-
-void
-Sequence::SequenceCreator::ChangeCurrentBy(int sign)
-{
-    int index = _currentLength - 1;
-
-    while ( index > -1 &&
-            _current[index] == HighestOfChar(_current[index], sign) )
-    {
-        _current[index] = LowestOfChar(_current[index], sign);
-        --index;
-    }
-
-    if(index >= 0 )
-    {
-        _current[index] += sign;
-    }
-    else if (sign > 0)
-    {
-        ShiftRight(_current);
-        _currentLength++;
-
-        _current[0] = DecadeOfChar(_stop[_stopLength - _currentLength], sign);
-    }
-    else if (sign < 0)
-    {
-        ShiftLeft(_current);
-        --_currentLength;
-    }
-
-    while( _current[0] == '0' )
-    {
-        ShiftLeft(_current);
-        --_currentLength;
-    }
-}
-
-inline void
-Sequence::SequenceCreator::ShiftLeft(char * buffer)
-{
-    while( *buffer++ = *buffer );
-}
-
-inline void
-Sequence::SequenceCreator::ShiftRight(char * buffer)
-{
-    char *iter = buffer + strlen(buffer) + 1;
-
-    while( iter!= buffer )
-        *iter-- = *iter;
-}
-
-char
-Sequence::SequenceCreator::HighestOfChar(char c, int sign)
-const
-{
-    if(isupper(c))
-    {
-        if(sign > 0)
-            return ( 'Z' );
-        return 'A';
-    }
-    if(islower(c))
-    {
-        if(sign > 0)
-            return ( 'z' );
-        return ( 'a' );
-    }
-    if(isdigit(c))
-    {
-        if(sign > 0)
-            return ( '9' );
-        return ( '0' );
-    }
-
-    return ( 0 );
-}
-
-char
-Sequence::SequenceCreator::LowestOfChar(char c, int sign)
-const
-{
-    return ( HighestOfChar(c, -sign) );
-}
-
-char
-Sequence::SequenceCreator::DecadeOfChar(char c, int sign)
-const
-{
-    if(isalpha(c))
-        return (LowestOfChar(c, sign));
-
-    if(sign > 0)
-        return '1';
-    return '9';
-}
-
-

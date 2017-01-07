@@ -47,7 +47,7 @@ Sequence::SequenceCreationClient::PrintSequence(std::string& separator)
 {
     while( !_sequenceCreator->End() )
     {
-        std::cout << separator << _sequenceCreator->GetNext();
+//        std::cout << separator << _sequenceCreator->GetNext();
     }
 }
 
@@ -84,7 +84,7 @@ Sequence::SequenceCreationClient::Register(
     {
         delete ( _sequenceCreator );
 
-        _sequenceCreator = new Sequence::SequenceCreator(start.c_str(), stop.c_str(), difference);
+//        _sequenceCreator = new Sequence::SequenceCreator(start.c_str(), stop.c_str(), difference);
 
         return ( true );
     }
@@ -115,8 +115,8 @@ const
     return (
                Sequence::AllAlphaNumeric(a.c_str(), a.size())  &&
                Sequence::AllAlphaNumeric(b.c_str(), b.size())  &&
-               a != "0"                                        &&
-               b != "0"                                        &&
+//               a != "0"                                        &&
+//               b != "0"                                        &&
                StringHelper::Reverse_SameTypeCharacters(a, b)
            );
 }

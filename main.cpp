@@ -7,6 +7,9 @@
 #include "RegexClient.h"
 #include "SequenceCreationClient.h"
 
+#include "SequenceType.h"
+#include "SequenceCreator.h"
+
 #include <cstdlib>
 #include <time.h>
 
@@ -84,8 +87,8 @@ stg sequence    [before:start:separator:stop:after[:absolute difference]]\
 
 int DMain()
 {
-    return ( DebugRegex() );
-//    return ( DebugRange() );
+//    return ( DebugRegex() );
+    return ( DebugRange() );
 }
 
 int DebugRegex()
@@ -139,15 +142,13 @@ int DebugRegex()
 
 int DebugRange()
 {
-    char start[] = "10";
-    char stop[] = "00";
+    Sequence::SequenceCreator creator("123aac", "123abc", 1);
 
-    Sequence::SequenceCreationClient client;
-
-    if( !client.GenerateSequence(start, stop, 3) )
+    do
     {
-        std::cerr << "Invalid sequence !" << std::endl;
-    }
+        std::cerr << creator.Get() << std::endl;
+        creator.CalculateNext();
+    } while( !creator.End() );
 
     return ( 0 );
 }
