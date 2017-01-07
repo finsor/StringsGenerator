@@ -7,116 +7,75 @@
 #include "StaticSequenceFunctions.h"
 #include "StringHelperStaticFunctions.h"
 
+Sequence::SequenceCreationClient::SequenceCreationClient(
+    std::string start,
+    std::string stop,
+    int difference,
+    std::string before,
+    std::string separator,
+    std::string after)
+    :
+    _before(before.c_str()),
+    _separator(separator.c_str()),
+    _after(after.c_str())
+{
+    _sequenceCreator =
+        new SequenceCreator(start.c_str(), stop.c_str(), difference);
+}
 
 Sequence::SequenceCreationClient::~SequenceCreationClient()
 {
     delete ( _sequenceCreator );
 }
 
-std::string
-Sequence::SequenceCreationClient::UsageString()
+const char *
+Sequence::SequenceCreationClient::Next()
 {
-    return (
-""
-            );
-}
+#define BEFORE 0
+#define CALCUL 1
+#define SEPAFT 2
+#define NULLPT 3
 
-bool
-Sequence::SequenceCreationClient::GenerateSequence(
-    std::string start,
-    std::string stop,
-    uint32_t differenceMultiplication,
-    std::string before,
-    std::string separator,
-    std::string after)
-{
-    if( !RememberRequest(start, stop, differenceMultiplication) )
-        return ( false );
+    static int state = 0;
 
-    std::cout << before << start;
-    PrintSequence(separator);
-    std::cout << after;
-
-    return ( true );
-}
-
-/* private */
-
-void
-Sequence::SequenceCreationClient::PrintSequence(std::string& separator)
-{
-    while( !_sequenceCreator->End() )
+    switch(state)
     {
-//        std::cout << separator << _sequenceCreator->GetNext();
+    case SEPAFT:
+
+        _sequenceCreator->CalculateNext();
+
+        if( !_sequenceCreator->End() )
+        {
+            state = CALCUL;
+
+            return ( _separator );
+        }
+        else // end
+        {
+            state = NULLPT;
+
+            return ( _after );
+        }
+
+
+    case CALCUL:
+
+        state = SEPAFT;
+
+        return ( _sequenceCreator->Get() );
+
+
+    case NULLPT:
+
+        return ( nullptr );
+
+
+    case BEFORE:
+
+        state = CALCUL;
+
+        return ( _before );
     }
-}
 
-int
-Sequence::SequenceCreationClient::Difference(
-    std::string& start,
-    std::string& stop,
-    uint32_t differenceMultiplication)
-const
-{
-    return ( differenceMultiplication * Sequence::Compare(start.c_str(), stop.c_str()) );
-}
-
-bool
-Sequence::SequenceCreationClient::RememberRequest(
-    std::string& start,
-    std::string& stop,
-    uint32_t differenceMultiplication)
-{
-    int difference = Difference(start, stop, differenceMultiplication);
-
-    bool success   = Register(start, stop, difference);
-
-    return ( success );
-}
-
-bool
-Sequence::SequenceCreationClient::Register(
-    std::string& start,
-    std::string& stop,
-    int difference)
-{
-    if( IsValidSequence(start, stop, difference) )
-    {
-        delete ( _sequenceCreator );
-
-//        _sequenceCreator = new Sequence::SequenceCreator(start.c_str(), stop.c_str(), difference);
-
-        return ( true );
-    }
-    else
-        return ( false );
-}
-
-bool
-Sequence::SequenceCreationClient::IsValidSequence(
-    std::string& start,
-    std::string& stop,
-    int difference)
-const
-{
-    return(
-              !start.empty()             &&
-              !stop.empty()              &&
-              CheckValues(start, stop)
-          );
-}
-
-bool
-Sequence::SequenceCreationClient::CheckValues(
-    std::string& a,
-    std::string& b)
-const
-{
-    return (
-               Sequence::AllAlphaNumeric(a.c_str(), a.size())  &&
-               Sequence::AllAlphaNumeric(b.c_str(), b.size())  &&
-//               a != "0"                                        &&
-//               b != "0"                                        &&
-               StringHelper::Reverse_SameTypeCharacters(a, b)
-           );
+    return ( nullptr );
 }

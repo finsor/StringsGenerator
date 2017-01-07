@@ -12,7 +12,9 @@ int RegexMain(int argc, char *argv[]);
 int SequenceMain(int argc, char *argv[]);
 
 // Function used to print general usage of the program
-int PrintGeneralUsage(char * programName);
+void PrintGeneralUsage();
+
+void PrintSequenceUsage();
 
 #else // ifdef DEBUG
 

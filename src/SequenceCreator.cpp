@@ -55,11 +55,11 @@ Sequence::SequenceCreator::Get()
 bool
 Sequence::SequenceCreator::End()
 {
-    if( _difference < 0 && _current < _stop )
-        return ( true );
+    if( _difference < 0 )
+        return ( _current < _stop );
 
-    if ( _difference > 0 && _current > _stop )
-        return ( true );
+    if ( _difference > 0 )
+        return ( _current > _stop );
 
     return ( false );
 }

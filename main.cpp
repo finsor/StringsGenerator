@@ -2,13 +2,9 @@
 #include <stdexcept>
 #include <cstring>
 
-
 #include "main.h"
 #include "RegexClient.h"
 #include "SequenceCreationClient.h"
-
-#include "SequenceType.h"
-#include "SequenceCreator.h"
 
 #include <cstdlib>
 #include <time.h>
@@ -25,7 +21,7 @@ int main(int argc, char *argv[])
 #ifndef DEBUG
 int RMain(int argc, char *argv[])
 {
-    if( argc > 1 )
+    if( 3 == argc || 2 == argc )
     {
         if( 0 == strcmp(argv[1], "regex") )
             return ( RegexMain(argc-2, argv+2) );
@@ -34,14 +30,20 @@ int RMain(int argc, char *argv[])
             return ( SequenceMain(argc-2, argv+2) );
     }
 
-    return ( PrintGeneralUsage(argv[0]) );
+    PrintGeneralUsage();
+
+    return ( 0 );
 }
 
 int RegexMain(int argc, char *argv[])
 {
     Regex::RegexClient client;
 
-    if( argc == 1 )
+    if( 0 == argc )
+    {
+        std::cerr << client.UsageString() << std::endl;
+    }
+    else if ( 1 == argc )
     {
         try
         {
@@ -54,24 +56,51 @@ int RegexMain(int argc, char *argv[])
         }
 
     }
-    else
-    {
-        std::cerr << client.UsageString() << std::endl;
-    }
 
     return ( 0 );
 }
 
 int SequenceMain(int argc, char *argv[])
 {
-    Sequence::SequenceCreationClient client;
+    if( 0 == argc )
+    {
+        PrintSequenceUsage();
+    }
+    else if ( 1 == argc )
+    {
+        std::string start = "1";
+        std::string stop = "5";
+        std::string before = "char string[] = { \'";
+        std::string after = "\' };";
+        std::string separator = "', '";
+        int         difference = 3;
 
-    std::cerr << client.UsageString() << std::endl;
+
+        try
+        {
+            Sequence::SequenceCreationClient client(start,
+                                                    stop,
+                                                    difference,
+                                                    before,
+                                                    separator,
+                                                    after);
+            const char * str;
+
+            while( nullptr != (str = client.Next()) )
+            {
+                std::cout << str;
+            }
+        }
+        catch (const std::exception& ex)
+        {
+            std::cerr << ex.what() << std::endl;
+        }
+    }
 
     return ( 0 );
 }
 
-int PrintGeneralUsage(char * programName)
+void PrintGeneralUsage()
 {
     std::cerr << "\
 Program Usage:\n\
@@ -79,8 +108,11 @@ Program Usage:\n\
 stg regex       [regular expression]\n\
 stg sequence    [before:start:separator:stop:after[:absolute difference]]\
 " << std::endl;
+}
 
-    return ( 0 );
+void PrintSequenceUsage()
+{
+    std::cerr << "Sequence Usage" << std::endl;
 }
 
 #else // #ifdef DEBUG
@@ -142,15 +174,40 @@ int DebugRegex()
 
 int DebugRange()
 {
-    Sequence::SequenceCreator creator("123aac", "123abc", 1);
+    std::string start = "1";
+    std::string stop = "5";
+    std::string before = "char string[] = { \'";
+    std::string after = "\' };";
+    std::string separator = "', '";
+    int         difference = 3;
 
-    do
+    try
     {
-        std::cerr << creator.Get() << std::endl;
-        creator.CalculateNext();
-    } while( !creator.End() );
+        Sequence::SequenceCreationClient client(start,
+                                                stop,
+                                                difference,
+                                                before,
+                                                separator,
+                                                after);
 
-    return ( 0 );
+        const char * str;
+
+        while( nullptr != (str = client.Next()) )
+        {
+            std::cout << str;
+        }
+
+        return ( 0 );
+
+    }
+    catch (const std::exception& ex)
+    {
+
+        std::cerr << ex.what() << std::endl;
+
+        return ( 1 );
+
+    }
 }
 
 #endif // DEBUG
