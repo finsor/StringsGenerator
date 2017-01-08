@@ -1,5 +1,8 @@
 #include "StringHelperStaticFunctions.h"
 
+#include <cctype>
+#include <sstream>
+
 bool
 StringHelper::IsSameType(char a, char b)
 {
@@ -28,8 +31,8 @@ StringHelper::SameTypeCharacters(std::string& one, std::string& two, uint32_t n)
     uint32_t oneIter = 0, twoIter = 0;
 
     while( oneIter < maxIndex &&
-           twoIter < maxIndex &&
-           IsSameType(one[oneIter], two[twoIter]) )
+            twoIter < maxIndex &&
+            IsSameType(one[oneIter], two[twoIter]) )
     {
         ++oneIter;
         ++twoIter;
@@ -60,4 +63,33 @@ std::string
 StringHelper::ShiftRight(const std::string& str)
 {
     return ( " " + str );
+}
+
+std::vector<std::string>
+StringHelper::Split(const std::string& str, char delimiter)
+{
+    std::stringstream test(str);
+    std::string segment;
+    std::vector<std::string> seglist;
+
+    while(std::getline(test, segment, delimiter))
+    {
+       seglist.push_back(segment);
+    }
+
+    return ( seglist );
+}
+
+bool
+StringHelper::IsNumber(const std::string& str)
+{
+    std::string::const_iterator iter = str.begin();
+
+    if ( str.size() > 1 && *iter == '-' )
+        ++iter;
+
+    while( iter != str.end() && isdigit(*iter) )
+        ++iter;
+
+    return ( iter == str.end() );
 }

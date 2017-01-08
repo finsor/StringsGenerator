@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1483821794 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483914219 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
@@ -9,7 +9,7 @@
 	<cstdlib>
 	<time.h>
 
-1483212537 c:\users\or_fins\desktop\newstgcpp\stg\main.h
+1483822623 c:\users\or_fins\desktop\newstgcpp\stg\main.h
 
 1483118255 source:c:\users\or_fins\desktop\newstgcpp\stg\src\bracketscontentprocessor.cpp
 	"BracketsContentProcessor.h"
@@ -234,13 +234,15 @@
 	"IMultiplier.h"
 	"IRegexParser.h"
 
-1483789518 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
+1483914163 c:\users\or_fins\desktop\newstgcpp\stg\include\stringhelperstaticfunctions.h
 	<iostream>
 	<algorithm>
 	<string>
+	<vector>
 
-1483789687 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
+1483914171 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
 	"StringHelperStaticFunctions.h"
+	<cctype>
 
 1483820616 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
 	"SequenceCreator.h"

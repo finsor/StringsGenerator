@@ -68,19 +68,78 @@ int SequenceMain(int argc, char *argv[])
     }
     else if ( 1 == argc )
     {
+        // 3: start,stop,difference
+        // 4: start, separator, stop, difference
+        // 6: before, start, separator, stop, after, difference
+
+        // [before:]start:[separator:]stop:[after:]difference
+
         std::string start = "1";
         std::string stop = "5";
-        std::string before = "char string[] = { \'";
-        std::string after = "\' };";
-        std::string separator = "', '";
-        int         difference = 3;
+        std::string before = "";
+        std::string after = "";
+        std::string separator = "\n";
+        std::string difference;
 
+        std::vector<std::string> params = StringHelper::Split(argv[0], ':');
+
+        switch( params.size() )
+        {
+        case 3:
+            start       = params[0];
+            stop        = params[1];
+            difference  = params[2];
+
+            break;
+
+        case 4:
+            start       = params[0];
+            separator   = params[1];
+            stop        = params[2];
+            difference  = params[3];
+
+            break;
+
+        case 6:
+            before      = params[0];
+            start       = params[1];
+            separator   = params[2];
+            stop        = params[3];
+            after       = params[4];
+            difference  = params[5];
+
+            break;
+
+        default:
+
+            PrintSequenceUsage();
+
+            return ( 0 );
+
+            break;
+
+        }
+
+        int int_difference;
+
+        if( !StringHelper::IsNumber(difference) )
+        {
+            std::cerr << "Invalid difference ! Received " << difference << std::endl;
+
+            return ( 0 );
+        }
+        else
+        {
+            int_difference = atoi(difference.c_str());
+        }
+
+        // RegexClient for before, separator, after
 
         try
         {
             Sequence::SequenceCreationClient client(start,
                                                     stop,
-                                                    difference,
+                                                    int_difference,
                                                     before,
                                                     separator,
                                                     after);

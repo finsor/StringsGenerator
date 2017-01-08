@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <string>
+#include <vector>
 
 
 namespace StringHelper
@@ -37,6 +38,13 @@ extern std::string ShiftLeft(const std::string& str);
 // Function returns $outStr as $inStr left shifted once
 // For example, for input "ABCDE", output is "BCDE".
 extern std::string ShiftRight(const std::string& str);
+
+// Function splits $str by $delimiter
+// Returns a vector of its parts
+extern std::vector<std::string> Split(const std::string& str, char delimiter);
+
+// Returns whether $str consists only of numbers
+extern bool IsNumber(const std::string& str);
 
 }
 
