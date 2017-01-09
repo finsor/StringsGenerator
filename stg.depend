@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1483914219 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483992598 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
 	"main.h"
+	"Formatter.h"
 	"RegexClient.h"
 	"SequenceCreationClient.h"
 	<cstdlib>
@@ -108,12 +109,12 @@
 1482960156 source:c:\users\or_fins\desktop\newstgcpp\stg\src\printablecharacters.cpp
 	"PrintableCharacters.h"
 
-1482960273 c:\users\or_fins\desktop\newstgcpp\stg\include\regexclient.h
+1483991397 c:\users\or_fins\desktop\newstgcpp\stg\include\regexclient.h
 	<string>
 	<memory>
 	"IRegexParser.h"
 
-1483212873 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
+1483991912 source:c:\users\or_fins\desktop\newstgcpp\stg\src\regexclient.cpp
 	"RegexClient.h"
 	<string>
 	<stdexcept>
@@ -240,9 +241,10 @@
 	<string>
 	<vector>
 
-1483914171 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
+1483991752 source:c:\users\or_fins\desktop\newstgcpp\stg\src\stringhelperstaticfunctions.cpp
 	"StringHelperStaticFunctions.h"
 	<cctype>
+	<sstream>
 
 1483820616 source:c:\users\or_fins\desktop\newstgcpp\stg\src\sequencecreator.cpp
 	"SequenceCreator.h"

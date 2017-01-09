@@ -15,6 +15,15 @@
 #include "Replacer.h"
 
 std::string
+Regex::RegexClient::Generate(const char * regularExpression)
+{
+    std::string tmp(regularExpression);
+
+    return ( Generate(tmp) );
+}
+
+
+std::string
 Regex::RegexClient::Generate(std::string& regularExpression)
 {
     std::string newRegex = Preprocessor(regularExpression);
@@ -50,7 +59,9 @@ Regex::RegexClient::UsageString()
     /a stands for [a-z]\n\
     /d stands for [0-9]\n\
     /n stands for [^a-z]\n\
-    /w stands for [0-9a-zA-Z_]\
+    /w stands for [0-9a-zA-Z_]\n\
+\\n stands for newline\n\
+\\t stands for tab char\n\
 "
     );
 }
@@ -70,6 +81,8 @@ Regex::RegexClient::Preprocessor(const std::string& regularExpression)
     replacer.Add("/w", "[0-9a-zA-Z_]");
     replacer.Add("/W", "[^0-9a-zA-Z_]");
     replacer.Add("/?", "{[01]}");
+    replacer.Add("\\n", "\n");
+    replacer.Add("\\t", "\t");
 
     return ( replacer.GetReplaced(regularExpression) );
 }

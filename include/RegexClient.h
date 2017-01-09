@@ -17,6 +17,7 @@ public:
 
     std::string UsageString();
     std::string Generate(std::string& regularExpression);
+    std::string Generate(const char * regularExpression);
 
 private:
 

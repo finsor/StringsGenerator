@@ -3,6 +3,7 @@
 #include <cstring>
 
 #include "main.h"
+#include "Formatter.h"
 #include "RegexClient.h"
 #include "SequenceCreationClient.h"
 
@@ -14,7 +15,16 @@ int main(int argc, char *argv[])
 #ifdef DEBUG
     return ( DMain() );
 #else
-    return ( RMain(argc, argv) );
+    try
+    {
+        return ( RMain(argc, argv) );
+    }
+    catch (const std::exception& ex)
+    {
+        std::cerr << ex.what() << std::endl;
+
+        return ( 1 );
+    }
 #endif // DEBUG
 }
 
@@ -32,128 +42,108 @@ int RMain(int argc, char *argv[])
 
     PrintGeneralUsage();
 
-    return ( 0 );
+    return ( 1 );
 }
 
 int RegexMain(int argc, char *argv[])
 {
     Regex::RegexClient client;
 
-    if( 0 == argc )
+    if( 1 != argc )
     {
         std::cerr << client.UsageString() << std::endl;
+
+        return ( 1 );
     }
-    else if ( 1 == argc )
+    else // if ( 1 == argc )
     {
-        try
-        {
-            std::string regularExpression(argv[0]);
-            std::cout << client.Generate(regularExpression) << std::endl;
-        }
-        catch ( std::exception& ex )
-        {
-            std::cerr << ex.what() << std::endl;
-        }
+        std::cout << client.Generate(argv[0]) << std::endl;
 
+        return ( 0 );
     }
-
-    return ( 0 );
 }
 
 int SequenceMain(int argc, char *argv[])
 {
-    if( 0 == argc )
+    if( 1 != argc )
     {
         PrintSequenceUsage();
+
+        return ( 1 );
     }
-    else if ( 1 == argc )
+
+    Regex::RegexClient regexClient;
+    std::vector<std::string> params = StringHelper::Split(argv[0], ':');
+
+    for(std::vector<std::string>::iterator iter = params.begin(); iter != params.end(); ++iter)
     {
-        // 3: start,stop,difference
-        // 4: start, separator, stop, difference
-        // 6: before, start, separator, stop, after, difference
+        *iter = regexClient.Generate(*iter);
+    }
 
-        // [before:]start:[separator:]stop:[after:]difference
+    std::string before, start, separator, stop, after, difference;
 
-        std::string start = "1";
-        std::string stop = "5";
-        std::string before = "";
-        std::string after = "";
-        std::string separator = "\n";
-        std::string difference;
+    switch( params.size() )
+    {
+    case 3:
+        before      = "";
+        start       = params[0];
+        separator   = "\n";
+        stop        = params[1];
+        after       = "";
+        difference  = params[2];
 
-        std::vector<std::string> params = StringHelper::Split(argv[0], ':');
+        break;
 
-        switch( params.size() )
-        {
-        case 3:
-            start       = params[0];
-            stop        = params[1];
-            difference  = params[2];
+    case 4:
+        before      = "";
+        start       = params[0];
+        separator   = params[1];
+        stop        = params[2];
+        after       = "";
+        difference  = params[3];
 
-            break;
+        break;
 
-        case 4:
-            start       = params[0];
-            separator   = params[1];
-            stop        = params[2];
-            difference  = params[3];
+    case 6:
+        before      = params[0];
+        start       = params[1];
+        separator   = params[2];
+        stop        = params[3];
+        after       = params[4];
+        difference  = params[5];
 
-            break;
+        break;
 
-        case 6:
-            before      = params[0];
-            start       = params[1];
-            separator   = params[2];
-            stop        = params[3];
-            after       = params[4];
-            difference  = params[5];
+    default:
 
-            break;
+        PrintSequenceUsage();
 
-        default:
+        return ( 1 );
 
-            PrintSequenceUsage();
+    }
 
-            return ( 0 );
+    int int_difference;
 
-            break;
+    if( !StringHelper::IsNumber(difference) )
+        throw std::domain_error(StringHelper::Formatter() << "Invalid difference ! Received " << difference << " but expected number.");
+    else
+        int_difference = atoi(difference.c_str());
 
-        }
+    start       = regexClient.Generate(start);
+    stop        = regexClient.Generate(stop);
+    separator   = regexClient.Generate(separator);
 
-        int int_difference;
+    Sequence::SequenceCreationClient client(start,
+                                            stop,
+                                            int_difference,
+                                            before,
+                                            separator,
+                                            after);
+    const char * str;
 
-        if( !StringHelper::IsNumber(difference) )
-        {
-            std::cerr << "Invalid difference ! Received " << difference << std::endl;
-
-            return ( 0 );
-        }
-        else
-        {
-            int_difference = atoi(difference.c_str());
-        }
-
-        // RegexClient for before, separator, after
-
-        try
-        {
-            Sequence::SequenceCreationClient client(start,
-                                                    stop,
-                                                    int_difference,
-                                                    before,
-                                                    separator,
-                                                    after);
-            const char * str;
-
-            while( nullptr != (str = client.Next()) )
-            {
-                std::cout << str;
-            }
-        }
-        catch (const std::exception& ex)
-        {
-            std::cerr << ex.what() << std::endl;
-        }
+    while( nullptr != (str = client.Next()) )
+    {
+        std::cout << str;
     }
 
     return ( 0 );
@@ -171,7 +161,7 @@ stg sequence    [before:start:separator:stop:after[:absolute difference]]\
 
 void PrintSequenceUsage()
 {
-    std::cerr << "Sequence Usage" << std::endl;
+    std::cerr << "[before:]start:[separator:]stop:[after:]difference" << std::endl;
 }
 
 #else // #ifdef DEBUG

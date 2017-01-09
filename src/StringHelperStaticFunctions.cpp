@@ -68,16 +68,42 @@ StringHelper::ShiftRight(const std::string& str)
 std::vector<std::string>
 StringHelper::Split(const std::string& str, char delimiter)
 {
-    std::stringstream test(str);
-    std::string segment;
-    std::vector<std::string> seglist;
+    std::vector<std::string> result;
 
-    while(std::getline(test, segment, delimiter))
+    if( str.empty() )
+        return ( result );
+
+    std::string::const_iterator last = str.begin();
+    std::string::const_iterator iter = str.begin() + 1;
+
+    while( iter != str.end() )
     {
-       seglist.push_back(segment);
+        if( '\\' != *(iter - 1) && delimiter == *iter )
+        {
+            std::string tmp(last, iter);
+            result.push_back(tmp);
+
+            last = iter + 1;
+        }
+
+        ++iter;
     }
 
-    return ( seglist );
+    std::string tmp(last, iter);
+    result.push_back(tmp);
+
+    return ( result );
+//
+//    std::stringstream test(str);
+//    std::string segment;
+//    std::vector<std::string> seglist;
+//
+//    while(std::getline(test, segment, delimiter))
+//    {
+//       seglist.push_back(segment);
+//    }
+//
+//    return ( seglist );
 }
 
 bool
