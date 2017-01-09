@@ -77,7 +77,7 @@ int SequenceMain(int argc, char *argv[])
 
     for(std::vector<std::string>::iterator iter = params.begin(); iter != params.end(); ++iter)
     {
-        *iter = regexClient.Generate(*iter);
+//        *iter = regexClient.Generate(*iter);
     }
 
     std::string before, start, separator, stop, after, difference;
@@ -161,7 +161,37 @@ stg sequence    [before:start:separator:stop:after[:absolute difference]]\
 
 void PrintSequenceUsage()
 {
-    std::cerr << "[before:]start:[separator:]stop:[after:]difference" << std::endl;
+    std::cerr << "\
+Program used to create linear sequences.\n\
+\n\
+Gets a start value, a stop value, and a difference.\n\
+Can optinally add preceding, following and separating values.\n\
+\n\
+Usage:\n\
+[precede:]start:[separator:]stop:[follower:]difference\n\
+\n\
+For example, the following input:\n\
+before\\:\\n:1z:\\nsep\\n:2e:\\n\\:after:2\n\
+\n\
+generates the following output:\n\
+before:\n\
+1z\n\
+sep\n\
+2b\n\
+sep\n\
+2d\n\
+:after\n\
+\n\
+For another example, the following input:\n\
+\"char abc[] = { ':a:', ':e:' };:1\"\n\
+\n\
+generates the following output:\n\
+char abc[] = { 'a', 'b', 'c', 'd', 'e' };\n\
+\n\
+Much time saved !\n\
+\n\
+Be creative. It's great for password bruteforcing!\
+" << std::endl;
 }
 
 #else // #ifdef DEBUG

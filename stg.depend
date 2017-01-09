@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1483992598 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1483995832 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>

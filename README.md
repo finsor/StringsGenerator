@@ -29,41 +29,40 @@ Usage as of Dec 2016:
     /a stands for [a-z]  
     /d stands for [0-9]  
     /n stands for [^a-z]  
-    /w stands for [0-9a-zA-Z_]  
+    /w stands for [0-9a-zA-Z_]\n\
+\\n stands for newline\n\
+\\t stands for tab char\n\ 
   
   
 SEQUENCE  
-Used to create large sequences between any 2 alphanumeric strings.  
-  
-For a simple example, for input:   
-    before    = "char array[] = { '"  
-    start     = "z"  
-    separator = "', '"  
-    stop      = "a"  
-    after     = "' };"  
-    (default difference = 1)  
-  
-Output is:  
-char array[] = { 'z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a' };  
-  
-Much time saved !  
-  
-For another example, a bit more complicated, for input:  
-    start      = "1a1"  
-    stop       = "2b2"  
-    difference = 2  
-    (default before = "")  
-    (defaut  after  = "")  
-    (default separator = "\n")  
-  
-Output is:  
-a1  
-a3  
-a5  
-a7  
-a9  
-b1  
-  
-Probably not a useful sequence, but you got the idea - It's great for password bruteforcing !
+Program used to create linear sequences.
+
+Gets a start value, a stop value, and a difference.
+Can optinally add preceding, following and separating values.
+
+Usage:
+[precede:]start:[separator:]stop:[follower:]difference
+
+For example, the following input:
+before\:\n:1z:\nsep\n:2e:\n\:after:2
+
+generates the following output:
+before:
+1z
+sep
+2b
+sep
+2d
+:after
+
+For another example, the following input:
+"char abc[] = { ':a:', ':e:' };:1"
+
+generates the following output:
+char abc[] = { 'a', 'b', 'c', 'd', 'e' };
+
+Much time saved !
+
+Be creative. It's great for password bruteforcing!
   
 Or Fins
