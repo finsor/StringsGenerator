@@ -5,6 +5,7 @@
 #include "main.h"
 #include "Formatter.h"
 #include "RegexClient.h"
+#include "Replacer.h"
 #include "SequenceCreationClient.h"
 
 #include <cstdlib>
@@ -75,11 +76,6 @@ int SequenceMain(int argc, char *argv[])
     Regex::RegexClient regexClient;
     std::vector<std::string> params = StringHelper::Split(argv[0], ':');
 
-    for(std::vector<std::string>::iterator iter = params.begin(); iter != params.end(); ++iter)
-    {
-//        *iter = regexClient.Generate(*iter);
-    }
-
     std::string before, start, separator, stop, after, difference;
 
     switch( params.size() )
@@ -129,9 +125,15 @@ int SequenceMain(int argc, char *argv[])
     else
         int_difference = atoi(difference.c_str());
 
-    start       = regexClient.Generate(start);
-    stop        = regexClient.Generate(stop);
-    separator   = regexClient.Generate(separator);
+
+    Replacer replacer;
+    replacer.Add("\\n", "\n");
+    replacer.Add("\\t", "\t");
+    replacer.Add("\\:", ":");
+
+    before      = replacer.GetReplaced(before);
+    after       = replacer.GetReplaced(after);
+    separator   = replacer.GetReplaced(separator);
 
     Sequence::SequenceCreationClient client(start,
                                             stop,

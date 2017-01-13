@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1483995832 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
+1484303441 source:c:\users\or_fins\desktop\newstgcpp\stg\main.cpp
 	<iostream>
 	<stdexcept>
 	<cstring>
 	"main.h"
 	"Formatter.h"
 	"RegexClient.h"
+	"Replacer.h"
 	"SequenceCreationClient.h"
 	<cstdlib>
 	<time.h>
