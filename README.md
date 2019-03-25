@@ -1,6 +1,6 @@
 # StringsGenerator
 
-Please read as raw....
+Better read raw.
 
 REGEX  
 Used to reverse the original use of regular expressions.  
