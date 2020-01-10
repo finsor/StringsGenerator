@@ -1,5 +1,7 @@
 # StringsGenerator
 
+A cryptographically secure (using Wincrypt library) regular-expression-defined random expressions generator. Very good for creating passwords and generating password dictionaries (C++).
+
 Better read raw.
 
 REGEX  
